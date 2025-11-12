@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PrivateRoute from './Routes/PrivateRoute.jsx';
 import AvailableFoods from './Pages/AvailableFoods/AvailableFoods.jsx';
 import FoodDetails from './Pages/FoodDetails/FoodDetails.jsx';
+import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <FoodDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/manage-foods",
+        element: (
+          <PrivateRoute>
+            <ManageMyFoods></ManageMyFoods>
           </PrivateRoute>
         ),
       },
