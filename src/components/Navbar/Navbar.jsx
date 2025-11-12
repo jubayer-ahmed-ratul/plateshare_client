@@ -16,7 +16,7 @@ const Navbar = () => {
       : "text-white font-bold text-lg mx-2 md:mx-4 hover:border-b-2 hover:border-gray-300";
 
   return (
-    <div className="bg-[#0c4428] shadow-sm px-4 ">
+    <div className="bg-[#0c4428] shadow-sm  ">
       <div className="flex items-center justify-between h-16 max-w-full md:max-w-11/12 mx-auto">
         
         <div className="flex items-center">

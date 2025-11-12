@@ -2,18 +2,16 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
+import Footer from "../Footer/Footer";
 
 const Rootlayout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div>
       <Navbar />
 
-      <main className="flex-grow">
-        <Outlet /> 
-      </main>
+      <Outlet />
 
-   
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -24,6 +22,8 @@ const Rootlayout = () => {
         draggable
         theme="colored"
       />
+
+      <Footer></Footer>
     </div>
   );
 };
