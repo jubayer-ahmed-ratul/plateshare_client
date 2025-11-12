@@ -9,6 +9,7 @@ import Home from './components/Home/Home.jsx';
 import AddFood from './Pages/AddFood/AddFood.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PrivateRoute from './Routes/PrivateRoute.jsx';
+import AvailableFoods from './Pages/AvailableFoods/AvailableFoods.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      { path: "/available-foods", element: <AvailableFoods></AvailableFoods> },
       {
         path: "/add-food",
         element: (

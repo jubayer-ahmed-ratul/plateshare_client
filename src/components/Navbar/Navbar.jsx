@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Available Foods", path: "/foods" },
+    { name: "Available Foods", path: "/available-foods" },
   ];
 
   const getActiveClass = ({ isActive }) =>

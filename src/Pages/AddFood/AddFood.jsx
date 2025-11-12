@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../components/context/AuthContext";
 
 const AddFood = () => {
@@ -22,11 +24,10 @@ const AddFood = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     const dataToSubmit = {
       food_name: formData.name,
       food_image: formData.image,
-      food_quantity: parseInt(formData.quantity), 
+      food_quantity: parseInt(formData.quantity),
       pickup_location: formData.location,
       expire_date: formData.expireDate,
       additional_notes: formData.notes || "",
@@ -42,7 +43,16 @@ const AddFood = () => {
       );
 
       if (response.status === 201) {
-        alert("Food added successfully!");
+        toast.success("Food added successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+
+       
         setFormData({
           name: "",
           image: "",
@@ -54,17 +64,26 @@ const AddFood = () => {
       }
     } catch (error) {
       console.error("Error adding food:", error);
-      alert("Failed to add food. Please try again.");
+      toast.error("Failed to add food. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
   return (
-    <section className="py-5 bg-green-50 flex justify-center items-start">
+    <section className="py-5    flex justify-center items-start">
+      <ToastContainer />
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-green-900 mb-6 text-center">
           Add Food
         </h2>
 
+       
         <div className="mb-6 p-4 bg-green-100 rounded-lg flex items-center gap-4">
           {user?.photoURL && (
             <img
@@ -84,6 +103,7 @@ const AddFood = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+       
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-green-800 font-semibold mb-1 text-sm">
@@ -115,7 +135,7 @@ const AddFood = () => {
             </div>
           </div>
 
-    
+        
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-green-800 font-semibold mb-1 text-sm">
@@ -147,6 +167,7 @@ const AddFood = () => {
             </div>
           </div>
 
+        
           <div>
             <label className="block text-green-800 font-semibold mb-1 text-sm">
               Expire Date
@@ -176,7 +197,7 @@ const AddFood = () => {
             ></textarea>
           </div>
 
-         
+       
           <button
             type="submit"
             className="w-full bg-green-800 text-white font-semibold py-2.5 rounded-lg hover:bg-green-900 transition text-sm"
