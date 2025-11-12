@@ -7,6 +7,7 @@ import Rootlayout from './components/layout/rootlayout.jsx';
 import AuthProvider from './components/context/AuthProvider.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
+import Home from './components/Home/Home.jsx';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,12 @@ const router = createBrowserRouter([
     element: <Rootlayout />,
   
       children: [
+        
+      {
+        path: "/",
+        element: <Home />,
+      },
+        
      
       {
         path: "/login",
@@ -23,7 +30,6 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      // এখানে চাইলে আরও route add করতে পারো
     ],
   },
 ]);

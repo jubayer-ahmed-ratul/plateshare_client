@@ -11,7 +11,8 @@
 
 /* 🟣 Custom gradient button */
 .btn-primary {
-  background: linear-gradient(90deg, #06ca47 0%, #c6dbcb 100%);
+  /* background: linear-gradient(90deg, #06ca47 0%, #c6dbcb 100%); */
+  background-color: green;
   border: none;
   color: white;
   font-weight: bold;
@@ -19,5 +20,6 @@
 }
 
 .btn-primary:hover {
-  background: linear-gradient(90deg, #99c7ac 0%, #81c389 100%);
+  background-color: #065f46; /* green-800 */
+  transform: scale(1.05); /* optional: subtle zoom on hover */
 }
