@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../components/context/AuthContext";
-import { Eye, EyeOff } from "lucide-react"; 
+import { Eye, EyeOff } from "lucide-react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const auth = useContext(AuthContext);
@@ -25,7 +27,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(""); 
+    setError("");
 
     if (!createUser) {
       setError("Registration service not available!");
@@ -36,6 +38,7 @@ const Register = () => {
       setError(
         "Password must contain an uppercase letter, lowercase letter, and at least 6 characters."
       );
+      toast.error("Password requirements not met!");
       return;
     }
 
@@ -43,23 +46,41 @@ const Register = () => {
       .then(() => {
         if (updateUserProfile) {
           updateUserProfile({ displayName: name, photoURL })
-            .then(() => navigate("/"))
-            .catch((err) => setError(err.message));
+            .then(() => {
+              toast.success(" Registered successfully!");
+              navigate("/");
+            })
+            .catch((err) => {
+              toast.error(err.message);
+              setError(err.message);
+            });
         } else {
+          toast.success(" Registered successfully!");
           navigate("/");
         }
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        setError(err.message);
+      });
   };
 
   const handleGoogleLogin = () => {
     if (!signInWithGoogle) {
       setError("Google login not available!");
+      toast.error("Google login not available!");
       return;
     }
+
     signInWithGoogle()
-      .then(() => navigate("/"))
-      .catch((err) => setError(err.message));
+      .then(() => {
+        toast.success("Logged in with Google!");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        setError(err.message);
+      });
   };
 
   return (
@@ -109,9 +130,7 @@ const Register = () => {
               </span>
             </div>
 
-            {error && (
-              <p className="text-red-500 text-sm -mt-2">{error}</p>
-            )}
+            {error && <p className="text-red-500 text-sm -mt-2">{error}</p>}
 
             <button type="submit" className="btn btn-neutral w-full mt-2">
               Register
@@ -134,10 +153,22 @@ const Register = () => {
             >
               <g>
                 <path d="m0 0H512V512H0" fill="#fff"></path>
-                <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>
-                <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path>
-                <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
-                <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path>
+                <path
+                  fill="#34a853"
+                  d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+                ></path>
+                <path
+                  fill="#4285f4"
+                  d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+                ></path>
+                <path
+                  fill="#fbbc02"
+                  d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+                ></path>
+                <path
+                  fill="#ea4335"
+                  d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+                ></path>
               </g>
             </svg>
             Register with Google
