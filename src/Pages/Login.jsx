@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { AuthContext } from "../components/context/AuthContext";
 import { toast } from "react-toastify";
 
@@ -8,6 +8,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the page the user originally tried to visit, default to "/"
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +26,7 @@ const Login = () => {
         toast.success("Logged in successfully!");
         setEmail("");
         setPassword("");
-        navigate("/");
+        navigate(from, { replace: true }); // Redirect to original page
       })
       .catch((err) => {
         toast.error(err.message || "Login failed. Try again.");
@@ -33,7 +37,7 @@ const Login = () => {
     signInWithGoogle()
       .then(() => {
         toast.success("Logged in with Google!");
-        navigate("/");
+        navigate(from, { replace: true }); // Redirect to original page
       })
       .catch((err) => toast.error(err.message || "Google login failed."));
   };
