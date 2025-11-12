@@ -23,7 +23,7 @@ const HowWorks = () => {
   ];
 
   return (
-    <section className="px-4 sm:px-6 lg:px-20 py-16 bg-gray-50">
+    <section className="px-4 sm:px-6 lg:px-20 py-16 bg-green-50">
       <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">
         How It Works
       </h2>
