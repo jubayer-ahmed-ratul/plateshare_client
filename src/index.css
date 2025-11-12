@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #632EE3; /* base color for text/focus shadows */
+  --color-secondary: teal;
+}
+
+/* 🟣 Custom gradient button */
+.btn-primary {
+  background: linear-gradient(90deg, #06ca47 0%, #c6dbcb 100%);
+  border: none;
+  color: white;
+  font-weight: bold;
+ 
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #99c7ac 0%, #81c389 100%);
+}
