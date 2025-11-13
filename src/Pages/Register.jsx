@@ -6,10 +6,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const auth = useContext(AuthContext);
+  const { createUser, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const { createUser, updateUserProfile, signInWithGoogle } = auth || {};
 
   const [name, setName] = useState("");
   const [photoURL, setPhotoURL] = useState("");
@@ -25,7 +23,7 @@ const Register = () => {
     return hasUppercase && hasLowercase && minLength;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -42,45 +40,31 @@ const Register = () => {
       return;
     }
 
-    createUser(email, password)
-      .then(() => {
-        if (updateUserProfile) {
-          updateUserProfile({ displayName: name, photoURL })
-            .then(() => {
-              toast.success(" Registered successfully!");
-              navigate("/");
-            })
-            .catch((err) => {
-              toast.error(err.message);
-              setError(err.message);
-            });
-        } else {
-          toast.success(" Registered successfully!");
-          navigate("/");
-        }
-      })
-      .catch((err) => {
-        toast.error(err.message);
-        setError(err.message);
-      });
+    try {
+      await createUser(email, password, name, photoURL);
+      toast.success("Registered successfully!");
+      navigate("/");
+    } catch (err) {
+      toast.error(err.message);
+      setError(err.message);
+    }
   };
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
     if (!signInWithGoogle) {
       setError("Google login not available!");
       toast.error("Google login not available!");
       return;
     }
 
-    signInWithGoogle()
-      .then(() => {
-        toast.success("Logged in with Google!");
-        navigate("/");
-      })
-      .catch((err) => {
-        toast.error(err.message);
-        setError(err.message);
-      });
+    try {
+      await signInWithGoogle();
+      toast.success("Logged in with Google!");
+      navigate("/");
+    } catch (err) {
+      toast.error(err.message);
+      setError(err.message);
+    }
   };
 
   return (
@@ -96,7 +80,6 @@ const Register = () => {
               className="input input-bordered w-full"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              required
             />
             <input
               type="text"

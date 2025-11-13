@@ -12,6 +12,7 @@ import PrivateRoute from './Routes/PrivateRoute.jsx';
 import AvailableFoods from './Pages/AvailableFoods/AvailableFoods.jsx';
 import FoodDetails from './Pages/FoodDetails/FoodDetails.jsx';
 import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
+import MyFoodRequests from './Pages/MyFoodRequest/MyFoodRequests.jsx';
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ManageMyFoods></ManageMyFoods>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-req",
+        element: (
+          <PrivateRoute>
+            <MyFoodRequests></MyFoodRequests>
           </PrivateRoute>
         ),
       },
