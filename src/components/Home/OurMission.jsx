@@ -20,7 +20,7 @@ const OurMission = () => {
     <section className="sm:px-6 lg:px-0 py-16 ">
       <div className="max-w-[90%] mx-auto flex flex-col md:flex-row items-start md:items-center gap-12">
         <div className="md:w-1/2">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">Our Mission</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-5 sm:mb-5 text-green-900">Our Mission</h2>
           <p className="text-lg sm:text-xl text-green-800 mb-6">
             We strive to reduce food waste, feed those in need, and create a sustainable and caring community. Every effort counts, and together we can make a meaningful impact.
           </p>

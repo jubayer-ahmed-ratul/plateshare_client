@@ -1,5 +1,6 @@
 import React from "react";
 import { Facebook, Linkedin } from "lucide-react";
+import { NavLink } from "react-router";
 
 const Footer = () => {
   return (
@@ -7,7 +8,9 @@ const Footer = () => {
       <div className="max-w-11/12 mx-auto py-10">
         <div className="flex flex-col items-center md:flex-row md:justify-between md:items-center gap-6">
           <div className="flex items-center gap-2">
-            <a className="text-2xl text-white normal-case">PlateShare</a>
+            <NavLink to="/" className="text-xl md:text-3xl font-bold text-white">
+                        PlateShare
+                      </NavLink>
           </div>
 
           <div className="flex flex-col items-center md:items-end">

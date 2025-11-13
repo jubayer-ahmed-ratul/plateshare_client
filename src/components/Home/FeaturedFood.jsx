@@ -4,6 +4,7 @@ import { MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/context/AuthContext";
 import { toast } from "react-toastify";
+import { NavLink } from "react-router-dom";
 
 const FeaturedFood = () => {
   const [topFoods, setTopFoods] = useState([]);
@@ -26,7 +27,7 @@ const FeaturedFood = () => {
   }, []);
 
   const handleViewDetails = (foodId) => {
-    const targetPath = `/food/${foodId}`; // Save target page
+    const targetPath = `/food/${foodId}`; 
     if (!user) {
       toast.info("Please login to view details.");
       navigate("/login", { state: { from: targetPath } });
@@ -36,8 +37,8 @@ const FeaturedFood = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-20 mx-auto">
-      <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-center mt-16">
+    <div className="px-4 sm:px-6 mb-10 mt-10 lg:px-20 mx-auto">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900 mt-5">
         Featured Foods
       </h2>
 
@@ -92,6 +93,15 @@ const FeaturedFood = () => {
           ))
         )}
       </div>
+      <div className="flex justify-center mt-10">
+  <NavLink to="/available-foods">
+    <button className="btn btn-primary px-8 py-3 text-lg font-bold">
+     Show All
+    </button>
+  </NavLink>
+</div>
+
+
     </div>
   );
 };

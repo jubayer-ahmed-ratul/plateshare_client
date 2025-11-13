@@ -24,7 +24,7 @@ const HowWorks = () => {
 
   return (
     <section className="px-4 sm:px-6 lg:px-20 py-16 bg-green-50">
-      <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900">
         How It Works
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

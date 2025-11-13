@@ -57,7 +57,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div className="hidden lg:flex space-x-4">
+        <div className="hidden lg:flex ml-[-6%] gap-10 space-x-4">
           {navLinks.map((link) => (
             <NavLink key={link.path} to={link.path} className={getActiveClass}>
               {link.name}

@@ -28,7 +28,6 @@ const AvailableFoods = () => {
     const targetPath = `/food/${foodId}`;
     if (!user) {
       toast.info('Please login to view details.');
-      // Use React Router state instead of localStorage
       navigate('/login', { state: { from: targetPath } });
     } else {
       navigate(targetPath);
@@ -36,8 +35,8 @@ const AvailableFoods = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-20 mx-auto">
-      <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-center mt-16">
+    <div className="px-4 sm:px-6 py-10 lg:px-20 mx-auto">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900">
         Available Foods
       </h2>
 

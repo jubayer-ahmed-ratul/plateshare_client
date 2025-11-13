@@ -36,9 +36,14 @@ const MyFoodRequests = () => {
 
   if (requests.length === 0) {
     return (
+      <div>
+         <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 mt-10 text-center text-green-900">
+        My Food Requests
+      </h2>
       <p className="text-center text-green-800 font-semibold text-lg sm:text-xl mt-10">
         No food requests found.
       </p>
+      </div>
     );
   }
 

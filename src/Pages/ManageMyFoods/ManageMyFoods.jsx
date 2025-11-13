@@ -11,7 +11,6 @@ const ManageMyFoods = () => {
   const [myFoods, setMyFoods] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Modal state
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
   const [updating, setUpdating] = useState(false);
@@ -51,7 +50,9 @@ const ManageMyFoods = () => {
             `https://plateshare-api-server.vercel.app/delete-food/${id}`
           );
           if (res.data.deletedCount > 0) {
-            toast.success("Food deleted successfully!");
+            toast.success("Food deleted successfully!", {
+              className: "bg-green-600 text-white",
+            });
             fetchMyFoods();
           }
         } catch (error) {
@@ -81,7 +82,6 @@ const ManageMyFoods = () => {
     e.preventDefault();
     setUpdating(true);
     try {
-      // Only include editable fields
       const updatedFood = {
         food_name: selectedFood.food_name,
         food_image: selectedFood.food_image,
@@ -97,7 +97,9 @@ const ManageMyFoods = () => {
       );
 
       if (res.data.modifiedCount > 0) {
-        toast.success("Food updated successfully!");
+        toast.success("Food updated successfully!", {
+          className: "bg-green-600 text-white",
+        });
         fetchMyFoods();
         closeModal();
       } else {
@@ -131,6 +133,7 @@ const ManageMyFoods = () => {
         </p>
       ) : (
         <>
+          {/* Desktop Table */}
           <div className="hidden md:block w-full">
             <table className="min-w-full border border-green-200 rounded-xl table-fixed">
               <thead className="bg-green-50">
@@ -192,7 +195,7 @@ const ManageMyFoods = () => {
                       <div className="flex items-center gap-2 h-20">
                         <button
                           onClick={() => openModal(food)}
-                          className="btn btn-sm btn-warning flex items-center gap-1 px-2"
+                          className="btn btn-sm btn-primary flex items-center gap-1 px-2"
                         >
                           <FaEdit className="text-xs" /> Update
                         </button>
@@ -210,6 +213,7 @@ const ManageMyFoods = () => {
             </table>
           </div>
 
+          {/* Mobile Cards */}
           <div className="md:hidden flex flex-col gap-4">
             {myFoods.map((food) => (
               <div
@@ -241,13 +245,13 @@ const ManageMyFoods = () => {
                 <div className="flex gap-2 mt-3">
                   <button
                     onClick={() => openModal(food)}
-                    className="btn btn-sm btn-warning flex-1 flex items-center justify-center gap-1"
+                    className="btn btn-primary flex-1 flex items-center justify-center gap-1"
                   >
                     <FaEdit /> Update
                   </button>
                   <button
                     onClick={() => handleDelete(food._id)}
-                    className="btn btn-sm btn-error flex-1 flex items-center justify-center gap-1"
+                    className="btn btn-error flex-1 flex items-center justify-center gap-1"
                   >
                     <FaTrash /> Delete
                   </button>
@@ -258,6 +262,7 @@ const ManageMyFoods = () => {
         </>
       )}
 
+      {/* Update Modal */}
       {modalOpen && selectedFood && (
         <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
           <div className="bg-white rounded-xl p-6 w-11/12 sm:w-96 relative shadow-lg pointer-events-auto">
@@ -314,7 +319,7 @@ const ManageMyFoods = () => {
                 <button
                   type="submit"
                   disabled={updating}
-                  className="btn btn-success flex-1"
+                  className="btn btn-primary flex-1"
                 >
                   {updating ? "Updating..." : "Update"}
                 </button>

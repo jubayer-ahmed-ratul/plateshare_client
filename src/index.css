@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+.ubuntu-font {
+  font-family: "Ubuntu", sans-serif;
+ 
+}
+
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default;
@@ -9,7 +16,7 @@
   --color-secondary: teal;
 }
 
-/* 🟣 Custom gradient button */
+
 .btn-primary {
   /* background: linear-gradient(90deg, #06ca47 0%, #c6dbcb 100%); */
   background-color: green;
@@ -23,3 +30,7 @@
   background-color: #065f46; /* green-800 */
   transform: scale(1.05); /* optional: subtle zoom on hover */
 }
+
+
+
+

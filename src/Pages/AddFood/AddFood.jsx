@@ -110,7 +110,7 @@ const AddFood = () => {
     <section className="py-5 flex justify-center items-start">
       <ToastContainer />
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-green-900 mb-6 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900">
           Add Food
         </h2>
 
