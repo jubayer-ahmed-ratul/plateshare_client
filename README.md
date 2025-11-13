@@ -18,7 +18,9 @@ PlateShare is a platform that connects people who want to share or receive meals
 - React Router for client‑side routing  
 - Tailwind CSS for styling  
 - Context API for state management  
-- Firebase (or chosen backend) for authentication and data storage  
+- Firebase  for authentication
+- Node.js and Express.js (Backend)
+- MongoDB (Database)
 
 
 
