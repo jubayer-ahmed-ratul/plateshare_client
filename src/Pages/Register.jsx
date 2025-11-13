@@ -16,54 +16,54 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
+  // Password validation
   const validatePassword = (pw) => {
     const hasUppercase = /[A-Z]/.test(pw);
     const hasLowercase = /[a-z]/.test(pw);
     const minLength = pw.length >= 6;
-    return hasUppercase && hasLowercase && minLength;
+    return { hasUppercase, hasLowercase, minLength };
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (!createUser) {
-      setError("Registration service not available!");
-      return;
-    }
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+    const trimmedPhoto = photoURL.trim();
 
-    if (!validatePassword(password)) {
-      setError(
-        "Password must contain an uppercase letter, lowercase letter, and at least 6 characters."
-      );
-      toast.error("Password requirements not met!");
+    const { hasUppercase, hasLowercase, minLength } = validatePassword(
+      trimmedPassword
+    );
+
+    if (!hasUppercase || !hasLowercase || !minLength) {
+      const msg = "Password must contain uppercase, lowercase letters, and at least 6 characters.";
+      setError(msg);
+      toast.error(msg, { autoClose: 4000 });
       return;
     }
 
     try {
-      await createUser(email, password, name, photoURL);
-      toast.success("Registered successfully!");
+      await createUser(trimmedEmail, trimmedPassword, trimmedName, trimmedPhoto);
+      toast.success("Registered successfully!", { autoClose: 4000 });
       navigate("/");
     } catch (err) {
-      toast.error(err.message);
-      setError(err.message);
+      const msg = err.message || "Registration failed!";
+      setError(msg);
+      toast.error(msg, { autoClose: 4000 });
     }
   };
 
   const handleGoogleLogin = async () => {
-    if (!signInWithGoogle) {
-      setError("Google login not available!");
-      toast.error("Google login not available!");
-      return;
-    }
-
     try {
       await signInWithGoogle();
-      toast.success("Logged in with Google!");
+      toast.success("Logged in with Google!", { autoClose: 4000 });
       navigate("/");
     } catch (err) {
-      toast.error(err.message);
-      setError(err.message);
+      const msg = err.message || "Google login failed!";
+      setError(msg);
+      toast.error(msg, { autoClose: 4000 });
     }
   };
 
@@ -115,7 +115,7 @@ const Register = () => {
 
             {error && <p className="text-red-500 text-sm -mt-2">{error}</p>}
 
-            <button type="submit" className="btn btn-neutral w-full mt-2">
+            <button type="submit" className="btn btn-primary w-full mt-2">
               Register
             </button>
           </form>

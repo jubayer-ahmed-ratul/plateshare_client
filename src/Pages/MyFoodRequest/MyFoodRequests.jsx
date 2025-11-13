@@ -13,7 +13,7 @@ const MyFoodRequests = () => {
     const fetchRequests = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/my-food-requests?email=${user.email}`
+          `https://plateshare-api-server.vercel.app/my-food-requests?email=${user.email}`
         );
         setRequests(res.data);
       } catch (err) {

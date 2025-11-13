@@ -16,9 +16,8 @@ const Navbar = () => {
       : "text-white font-bold text-lg mx-2 md:mx-4 hover:border-b-2 hover:border-gray-300";
 
   return (
-    <div className="bg-[#0c4428] shadow-sm  ">
-      <div className="flex items-center justify-between h-16 max-w-full md:max-w-11/12 mx-auto">
-        
+    <div className="bg-[#0c4428] shadow-sm">
+      <div className="flex items-center justify-between h-16 w-11/12 mx-auto ">
         <div className="flex items-center">
           <div className="lg:hidden mr-2">
             <div className="dropdown">
@@ -49,15 +48,11 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                 ))}
-                
               </ul>
             </div>
           </div>
 
-          <NavLink
-            to="/"
-            className="text-xl md:text-3xl font-bold text-white"
-          >
+          <NavLink to="/" className="text-xl md:text-3xl font-bold text-white">
             PlateShare
           </NavLink>
         </div>
@@ -72,7 +67,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-2">
           {!user ? (
-            <div className="flex  gap-2 md:gap-4">
+            <div className="flex gap-2 md:gap-4">
               <NavLink
                 to="/login"
                 className="btn btn-primary text-white px-4 md:px-6 py-2 rounded font-semibold"
@@ -107,7 +102,7 @@ const Navbar = () => {
                   <NavLink to="/manage-foods">Manage My Foods</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/my-requests">My Food Requests</NavLink>
+                  <NavLink to="/my-req">My Food Requests</NavLink>
                 </li>
                 <li>
                   <button onClick={logout} className="w-full text-left">

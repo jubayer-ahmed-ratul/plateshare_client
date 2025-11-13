@@ -187,7 +187,7 @@ const FoodDetails = () => {
   useEffect(() => {
     const fetchFood = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/food/${id}`);
+        const response = await axios.get(`https://plateshare-api-server.vercel.app/food/${id}`);
         setFood(response.data);
         
         setFormData(prev => ({
@@ -222,7 +222,7 @@ const FoodDetails = () => {
       if (!user || !food) return;
       
       try {
-        const response = await axios.get(`http://localhost:3000/my-food-requests?email=${user.email}`);
+        const response = await axios.get(`https://plateshare-api-server.vercel.app/my-food-requests?email=${user.email}`);
         const userRequests = response.data;
         
         const hasRequested = userRequests.some(
@@ -243,7 +243,7 @@ const FoodDetails = () => {
     
     setRequestsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3000/owner-food-requests?email=${user.email}`);
+      const response = await axios.get(`https://plateshare-api-server.vercel.app/owner-food-requests?email=${user.email}`);
       
       const foodRequests = response.data.filter(req => req.foodId === food._id);
       setRequests(foodRequests);
@@ -295,7 +295,7 @@ const FoodDetails = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/foodRequests", requestData);
+      await axios.post("https://plateshare-api-server.vercel.app/foodRequests", requestData);
       toast.success("Food request submitted successfully!");
       setShowModal(false);
       setFormData({ 
@@ -307,7 +307,7 @@ const FoodDetails = () => {
       });
       setAlreadyRequested(true);
       
-      const updatedFood = await axios.get(`http://localhost:3000/food/${id}`);
+      const updatedFood = await axios.get(`https://plateshare-api-server.vercel.app/food/${id}`);
       setFood(updatedFood.data);
       
     } catch (err) {
@@ -323,14 +323,14 @@ const FoodDetails = () => {
 
   const handleAction = async (requestId, action) => {
     try {
-      await axios.patch(`http://localhost:3000/foodRequests/${requestId}`, { 
+      await axios.patch(`https://plateshare-api-server.vercel.app/foodRequests/${requestId}`, { 
         status: action 
       });
 
       toast.success(`Request ${action} successfully!`);
       
       fetchOwnerRequests();
-      const updatedFood = await axios.get(`http://localhost:3000/food/${id}`);
+      const updatedFood = await axios.get(`https://plateshare-api-server.vercel.app/food/${id}`);
       setFood(updatedFood.data);
       
     } catch (err) {

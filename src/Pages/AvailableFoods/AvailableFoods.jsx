@@ -13,7 +13,7 @@ const AvailableFoods = () => {
   useEffect(() => {
     const fetchAvailableFoods = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/available-foods');
+        const response = await axios.get('https://plateshare-api-server.vercel.app/available-foods');
         setFoods(response.data);
       } catch (error) {
         console.error('Error fetching available foods:', error);
@@ -25,11 +25,13 @@ const AvailableFoods = () => {
   }, []);
 
   const handleViewDetails = (foodId) => {
+    const targetPath = `/food/${foodId}`;
     if (!user) {
       toast.info('Please login to view details.');
-      navigate('/login');
+      // Use React Router state instead of localStorage
+      navigate('/login', { state: { from: targetPath } });
     } else {
-      navigate(`/food/${foodId}`);
+      navigate(targetPath);
     }
   };
 

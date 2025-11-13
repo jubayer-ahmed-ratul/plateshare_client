@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const slides = [
   {
@@ -22,6 +23,7 @@ const slides = [
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,13 +61,14 @@ const HeroSection = () => {
         <p className="text-md sm:text-lg md:text-xl mt-4 sm:mt-6 md:mt-10 mb-3 sm:mb-4 md:mb-5">
           {text}
         </p>
-        <motion.button
-          className="btn btn-primary px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-[17px] mt-3 sm:mt-4 md:mt-5"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          View All Foods
-        </motion.button>
+           <motion.button
+      className="btn btn-primary px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-[17px] mt-3 sm:mt-4 md:mt-5"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => navigate("/available-foods")}
+    >
+      View All Foods
+    </motion.button>
       </motion.div>
     </section>
   );

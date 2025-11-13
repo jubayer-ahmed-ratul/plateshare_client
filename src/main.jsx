@@ -13,6 +13,8 @@ import AvailableFoods from './Pages/AvailableFoods/AvailableFoods.jsx';
 import FoodDetails from './Pages/FoodDetails/FoodDetails.jsx';
 import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
 import MyFoodRequests from './Pages/MyFoodRequest/MyFoodRequests.jsx';
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
+import "react-toastify/dist/ReactToastify.css";
 
 
 const router = createBrowserRouter([
@@ -24,6 +26,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/available-foods", element: <AvailableFoods></AvailableFoods> },
+      { path: "*", element: <ErrorPage/> },
+      
       {
         path: "/add-food",
         element: (

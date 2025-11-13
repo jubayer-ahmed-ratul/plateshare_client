@@ -20,7 +20,7 @@ const ManageMyFoods = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:3000/my-foods?email=${user?.email}`
+        `https://plateshare-api-server.vercel.app/my-foods?email=${user?.email}`
       );
       setMyFoods(response.data);
     } catch (error) {
@@ -48,7 +48,7 @@ const ManageMyFoods = () => {
       if (result.isConfirmed) {
         try {
           const res = await axios.delete(
-            `http://localhost:3000/delete-food/${id}`
+            `https://plateshare-api-server.vercel.app/delete-food/${id}`
           );
           if (res.data.deletedCount > 0) {
             toast.success("Food deleted successfully!");
@@ -92,7 +92,7 @@ const ManageMyFoods = () => {
       };
 
       const res = await axios.patch(
-        `http://localhost:3000/update-food/${selectedFood._id}`,
+        `https://plateshare-api-server.vercel.app/update-food/${selectedFood._id}`,
         updatedFood
       );
 

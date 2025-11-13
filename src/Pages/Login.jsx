@@ -10,8 +10,8 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Get the page the user originally tried to visit, default to "/"
-  const from = location.state?.from?.pathname || "/";
+  // Get redirect path after login, default "/"
+  const from = location.state?.from || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const Login = () => {
         toast.success("Logged in successfully!");
         setEmail("");
         setPassword("");
-        navigate(from, { replace: true }); // Redirect to original page
+        navigate(from, { replace: true }); // redirect to original target
       })
       .catch((err) => {
         toast.error(err.message || "Login failed. Try again.");
@@ -37,7 +37,7 @@ const Login = () => {
     signInWithGoogle()
       .then(() => {
         toast.success("Logged in with Google!");
-        navigate(from, { replace: true }); // Redirect to original page
+        navigate(from, { replace: true }); // redirect to original target
       })
       .catch((err) => toast.error(err.message || "Google login failed."));
   };
@@ -45,6 +45,7 @@ const Login = () => {
   return (
     <div className="hero my-10 flex flex-col items-center justify-center">
       <h1 className="text-5xl font-bold mb-6">Login now!</h1>
+
       <div className="card bg-base-100 w-full max-w-[400px] shadow-2xl">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
@@ -68,7 +69,7 @@ const Login = () => {
               required
             />
 
-            <button type="submit" className="btn btn-neutral mt-4 w-full">
+            <button type="submit" className="btn btn-primary mt-4 w-full">
               Login
             </button>
 
@@ -79,6 +80,7 @@ const Login = () => {
               onClick={handleGoogleLogin}
               className="btn bg-white text-black border-[#e5e5e5] w-full flex items-center justify-center gap-2"
             >
+              {/* Google logo SVG */}
               <svg
                 aria-label="Google logo"
                 width="16"
