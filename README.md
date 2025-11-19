@@ -73,16 +73,16 @@ PlateShare is a MERN Stack-based web application designed to reduce food waste b
 
 ### ** Backend Setup**
 
-git clone <BACKEND_REPO_URL>
-cd plateshare-backend
-nodemon index.js
-http://localhost:3000
+-- git clone https://github.com/jubayer-ahmed-ratul/plateshare_server.git
+-- cd plateshare-backend
+-- nodemon index.js
+-- http://localhost:3000
 
 ### ** Frontend Setup**
 
-git clone https://github.com/jubayer-ahmed-ratul/plateshare_client.git
-cd plateshare_client
-npm install
-npm run dev
+-- git clone https://github.com/jubayer-ahmed-ratul/plateshare_client.git
+-- cd plateshare_client
+-- npm install
+-- npm run dev
 
 
