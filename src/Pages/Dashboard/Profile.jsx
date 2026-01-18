@@ -72,9 +72,9 @@ const Profile = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
+      <div className="bg-themed-card rounded-2xl shadow-lg p-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">My Profile</h1>
+          <h1 className="text-3xl font-bold text-themed-primary">My Profile</h1>
           {!isEditing ? (
             <button
               onClick={() => setIsEditing(true)}
@@ -110,7 +110,7 @@ const Profile = () => {
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Profile Card */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
+          <div className="bg-themed-card rounded-2xl shadow-lg p-6 text-center">
             <div className="relative inline-block mb-6">
               <img
                 src={formData.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(formData.displayName || formData.email)}&background=0c4428&color=ffffff&size=128`}
@@ -124,10 +124,10 @@ const Profile = () => {
               )}
             </div>
             
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-themed-primary mb-2">
               {formData.displayName || 'User'}
             </h2>
-            <p className="text-gray-600 mb-4">{formData.email}</p>
+            <p className="text-themed-secondary mb-4">{formData.email}</p>
             
             <div className="bg-green-50 rounded-lg p-4">
               <h3 className="font-semibold text-green-800 mb-2">Account Status</h3>
@@ -140,13 +140,13 @@ const Profile = () => {
 
         {/* Profile Information */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6">Profile Information</h3>
+          <div className="bg-themed-card rounded-2xl shadow-lg p-6">
+            <h3 className="text-xl font-semibold text-themed-primary mb-6">Profile Information</h3>
             
             <div className="space-y-6">
               {/* Display Name */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-themed-primary mb-2">
                   <User size={16} className="inline mr-2" />
                   Display Name
                 </label>
@@ -156,11 +156,11 @@ const Profile = () => {
                     name="displayName"
                     value={formData.displayName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="input-themed w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="Enter your display name"
                   />
                 ) : (
-                  <div className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900">
+                  <div className="w-full px-4 py-3 bg-themed-tertiary border border-themed rounded-lg text-themed-primary">
                     {formData.displayName || 'Not set'}
                   </div>
                 )}

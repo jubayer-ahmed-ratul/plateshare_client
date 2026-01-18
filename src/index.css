@@ -2,7 +2,6 @@
 
 .ubuntu-font {
   font-family: "Ubuntu", sans-serif;
- 
 }
 
 @import "tailwindcss";
@@ -16,14 +15,231 @@
   --color-secondary: teal;
 }
 
+/* Dark mode CSS variables */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --border-color: #e5e7eb;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --category-name-color: #14532d; /* Green-900 for category names */
+}
+
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --border-color: #374151;
+  --card-bg: #1e293b;
+  --input-bg: #374151;
+  --category-name-color: #14532d; /* Keep same green color in dark mode */
+}
+
+/* Base styles with dark mode support */
+body {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom utility classes for consistent theming */
+.bg-themed-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-themed-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-themed-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+.bg-themed-card {
+  background-color: var(--card-bg);
+}
+
+.text-themed-primary {
+  color: var(--text-primary);
+}
+
+.text-themed-secondary {
+  color: var(--text-secondary);
+}
+
+.text-themed-tertiary {
+  color: var(--text-tertiary);
+}
+
+.border-themed {
+  border-color: var(--border-color);
+}
+
+.input-themed {
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.input-themed:focus {
+  border-color: #10b981;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Dark mode overrides for existing classes */
+.dark .bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.dark .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+.dark .text-gray-800 {
+  color: var(--text-primary) !important;
+}
+
+.dark .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .text-gray-500 {
+  color: var(--text-tertiary) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: var(--border-color) !important;
+}
+
+/* Specific dark mode text overrides */
+.dark .text-green-900 {
+  color: #ffffff !important;
+}
+
+/* Featured Foods specific styling */
+.dark .featured-title {
+  color: #ffffff !important;
+}
+
+.dark .food-item-name {
+  color: #ffffff !important;
+}
+
+/* Section titles dark mode */
+.dark h2.text-green-900 {
+  color: #ffffff !important;
+}
+
+.dark h3.text-green-900 {
+  color: #ffffff !important;
+}
+
+/* Stats numbers should be white in dark mode */
+.dark .stats-number {
+  color: #ffffff !important; /* Make white in dark mode */
+}
+
+/* Food Categories - all text white in dark mode, original colors in light mode */
+.dark .text-green-900 {
+  color: #ffffff !important;
+}
+
+.dark .text-gray-600 {
+  color: #ffffff !important;
+}
+
+.dark .text-green-700 {
+  color: #ffffff !important;
+}
+
+/* Food Categories specific overrides for dark mode */
+.dark h3.text-green-900 {
+  color: #ffffff !important;
+}
+
+/* All green-900 text should be white in dark mode */
+html.dark .text-green-900,
+html.dark h1.text-green-900,
+html.dark h2.text-green-900,
+html.dark h3.text-green-900 {
+  color: #ffffff !important;
+}
+
+/* Override for stats numbers specifically - now white in dark mode */
+html.dark .stats-number.text-green-900 {
+  color: #ffffff !important; /* Make white in dark mode */
+}
+
+/* Make sections have different dark shades for separation */
+.dark .bg-green-50 {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-white {
+  background-color: #1e293b !important;
+}
+
+/* Hero Section - Immune to dark mode */
+.hero-section,
+.hero-section * {
+  /* Prevent dark mode from affecting hero section */
+}
+
+.hero-section .bg-white {
+  background-color: #ffffff !important;
+}
+
+.hero-section .text-white {
+  color: #ffffff !important;
+}
+
+.hero-section .border-white {
+  border-color: #ffffff !important;
+}
+
+/* Card components dark mode */
+.dark .card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+}
 
 .btn-primary {
-  /* background: linear-gradient(90deg, #06ca47 0%, #c6dbcb 100%); */
   background-color: green;
   border: none;
   color: white;
   font-weight: bold;
- 
 }
 
 .btn-primary:hover {

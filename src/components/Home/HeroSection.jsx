@@ -5,11 +5,11 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section className="hero-section relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(https://i.ibb.co/KjWbZFT7/foodshare2-min.jpg)` }}
+        style={{ backgroundImage: `url(https://i.ibb.co.com/FkH2vgXG/banner1.jpg)` }}
       >
         <div className="absolute inset-0 bg-black/40"></div>
       </div>

@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 
 const Rootlayout = () => {
     return (
-       <div className="flex flex-col min-h-screen ubuntu-font">
+       <div className="flex flex-col min-h-screen ubuntu-font bg-themed-secondary text-themed-primary">
       <Navbar />
 
       <main className="flex-grow">

@@ -31,8 +31,8 @@ const FeaturedFood = () => {
   };
 
   return (
-    <div id="featured-section" className="px-4 sm:px-6 mb-10 mt-10 lg:px-20 mx-auto">
-      <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900 mt-5">
+    <div id="featured-section" className="px-4 sm:px-6 lg:px-20 mx-auto bg-white dark:bg-slate-900 py-16">
+      <h2 className="featured-title text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900">
         Featured Foods
       </h2>
 
@@ -48,7 +48,7 @@ const FeaturedFood = () => {
           topFoods.map((food) => (
             <div
               key={food._id}
-              className="card bg-base-100 rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105 h-full flex flex-col w-full max-w-sm"
+              className="card bg-themed-card dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105 h-full flex flex-col w-full max-w-sm border border-gray-200 dark:border-gray-600"
             >
               <figure className="flex-shrink-0">
                 <img
@@ -59,11 +59,11 @@ const FeaturedFood = () => {
               </figure>
 
               <div className="card-body flex-grow flex flex-col">
-                <h2 className="card-title text-2xl text-green-900">
+                <h2 className="food-item-name card-title text-2xl text-green-900">
                   {food.food_name}
                 </h2>
 
-                <p className="text-gray-600 text-sm flex-grow">
+                <p className="text-themed-secondary text-sm flex-grow">
                   {food.additional_notes ||
                     food.food_name +
                       " - Fresh and delicious food ready for pickup. Perfect for sharing with the community."}
@@ -80,9 +80,9 @@ const FeaturedFood = () => {
                   <p className="text-green-700 font-bold flex items-center gap-1">
                     <MapPin size={16} /> Pickup: {food.pickup_location}
                   </p>
-                  <p className="text-gray-700">Donor: {food.donator_name}</p>
+                  <p className="text-themed-secondary">Donor: {food.donator_name}</p>
 
-                  <div className="flex justify-between items-center text-sm text-gray-500 mt-2">
+                  <div className="flex justify-between items-center text-sm text-themed-tertiary mt-2">
                     <span>
                       {food.expired_date
                         ? `Expires: ${new Date(food.expired_date).toLocaleDateString()}`

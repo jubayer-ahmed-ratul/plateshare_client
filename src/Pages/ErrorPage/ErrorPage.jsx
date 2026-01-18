@@ -7,7 +7,7 @@ const ErrorPage = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center px-4">
       <img
-        src="https://i.ibb.co.com/yFDBLTCg/error.png"
+        src="https://i.ibb.co.com/Cs9nmfBs/error.png"
         alt="404 Not Found"
         className="w-64 sm:w-80 md:w-96"
       />

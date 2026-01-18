@@ -26,16 +26,16 @@ const CommunityImpact = () => {
   ];
 
   return (
-    <section className="px-4 sm:px-6 lg:px-20 py-16 bg-white">
-      <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900">
+    <section className="px-4 sm:px-6 lg:px-20 py-16 bg-white dark:bg-gray-800">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900 dark:text-white">
         Community Impact
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {impacts.map((impact, index) => (
           <div
             key={index}
-            className="bg-green-50 rounded-2xl shadow p-6 text-center
-                       transform transition duration-300 hover:shadow-xl hover:scale-105"
+            className="bg-green-50 dark:bg-gray-800 rounded-2xl shadow p-6 text-center
+                       transform transition duration-300 hover:shadow-xl hover:scale-105 border border-gray-200 dark:border-gray-600"
           >
             <div className={`inline-block px-4 py-2 rounded-full text-2xl font-bold mb-4 ${impact.color}`}>
               {impact.percentage}

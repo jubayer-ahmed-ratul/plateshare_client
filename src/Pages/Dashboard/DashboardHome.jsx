@@ -106,13 +106,13 @@ const DashboardHome = () => {
   return (
     <div className="space-y-6">
       {/* Welcome Header */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
+      <div className="bg-themed-card rounded-2xl shadow-lg p-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-themed-primary mb-2">
               Welcome back, {user?.displayName || user?.email?.split('@')[0]}!
             </h1>
-            <p className="text-gray-600">
+            <p className="text-themed-secondary">
               Here's an overview of your food sharing activities
             </p>
           </div>
@@ -131,10 +131,10 @@ const DashboardHome = () => {
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {summaryCards.map((card, index) => (
-          <div key={index} className="bg-white rounded-2xl shadow-lg p-6">
+          <div key={index} className="bg-themed-card rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600 mb-1">{card.title}</p>
+                <p className="text-sm font-medium text-themed-secondary mb-1">{card.title}</p>
                 <p className={`text-3xl font-bold ${card.textColor}`}>{card.value}</p>
               </div>
               <div className={`p-3 rounded-full ${card.color}`}>
@@ -148,9 +148,9 @@ const DashboardHome = () => {
       {/* Recent Activities */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Foods Shared */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        <div className="bg-themed-card rounded-2xl shadow-lg p-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Recent Foods Shared</h2>
+            <h2 className="text-xl font-semibold text-themed-primary">Recent Foods Shared</h2>
             <button
               onClick={() => navigate('/dashboard/manage-foods')}
               className="text-green-600 hover:text-green-700 font-medium text-sm"
@@ -161,8 +161,8 @@ const DashboardHome = () => {
           
           {recentFoods.length === 0 ? (
             <div className="text-center py-8">
-              <List size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-gray-500 mb-4">No foods shared yet</p>
+              <List size={48} className="mx-auto text-themed-tertiary mb-4" />
+              <p className="text-themed-secondary mb-4">No foods shared yet</p>
               <button
                 onClick={() => navigate('/dashboard/add-food')}
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
@@ -173,15 +173,15 @@ const DashboardHome = () => {
           ) : (
             <div className="space-y-4">
               {recentFoods.map((food) => (
-                <div key={food._id} className="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                <div key={food._id} className="flex items-center space-x-4 p-4 border border-themed rounded-lg hover:bg-themed-tertiary transition-colors">
                   <img
                     src={food.food_image}
                     alt={food.food_name}
                     className="w-12 h-12 rounded-lg object-cover"
                   />
                   <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">{food.food_name}</h3>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <h3 className="font-medium text-themed-primary">{food.food_name}</h3>
+                    <div className="flex items-center space-x-4 text-sm text-themed-secondary">
                       <span className="flex items-center space-x-1">
                         <Users size={14} />
                         <span>{food.food_quantity} portions</span>

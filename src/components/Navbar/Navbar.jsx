@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext"; 
+import { useTheme } from "../context/ThemeProvider";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ChevronDown, User, LogOut, Plus, List, Heart, Home } from "lucide-react";
+import { ChevronDown, User, LogOut, Plus, List, Heart, Home, Moon, Sun } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -45,10 +47,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <NavLink to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-[#0c4428] font-bold text-xl">P</span>
-              </div>
+            <NavLink to="/" className="flex items-center">
               <span className="text-xl md:text-2xl font-bold text-white">PlateShare</span>
             </NavLink>
           </div>
@@ -78,6 +77,15 @@ const Navbar = () => {
 
           {/* Right Side - Auth Section */}
           <div className="flex items-center space-x-4">
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
             {user ? (
               /* Advanced Profile Dropdown Menu */
               <div className="relative">

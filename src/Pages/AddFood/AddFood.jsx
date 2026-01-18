@@ -107,15 +107,15 @@ const AddFood = () => {
   const todayDate = new Date().toISOString().split('T')[0];
 
   return (
-    <section className="py-5 flex justify-center items-start">
+    <section className="py-5 flex justify-center items-start bg-white dark:bg-gray-900 min-h-screen">
       <ToastContainer />
-      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900">
+      <div className="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900 dark:text-white">
           Add Food
         </h2>
 
         {/* Donator Info */}
-        <div className="mb-6 p-4 bg-green-100 rounded-lg flex items-center gap-4">
+        <div className="mb-6 p-4 bg-green-100 dark:bg-gray-700 rounded-lg flex items-center gap-4">
           {user?.photoURL && (
             <img
               src={user.photoURL}
@@ -124,10 +124,10 @@ const AddFood = () => {
             />
           )}
           <div>
-            <p className="font-semibold text-green-900 text-sm">
+            <p className="font-semibold text-green-900 dark:text-green-400 text-sm">
               {user?.displayName || "Anonymous Donor"}
             </p>
-            <p className="text-green-800 text-xs">
+            <p className="text-green-800 dark:text-gray-300 text-xs">
               {user?.email || "Email not available"}
             </p>
           </div>
@@ -136,7 +136,7 @@ const AddFood = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-green-800 font-semibold mb-1 text-sm">
+              <label className="block text-green-800 dark:text-green-400 font-semibold mb-1 text-sm">
                 Food Name *
               </label>
               <input
@@ -144,14 +144,14 @@ const AddFood = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border border-green-300 rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
+                className="w-full border border-green-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
                 placeholder="e.g., Sandwich, Rice, Curry"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-green-800 font-semibold mb-1 text-sm">
+              <label className="block text-green-800 dark:text-green-400 font-semibold mb-1 text-sm">
                 Food Image URL *
               </label>
               <input
@@ -159,7 +159,7 @@ const AddFood = () => {
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
-                className="w-full border border-green-300 rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
+                className="w-full border border-green-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
                 placeholder="https://example.com/image.jpg"
                 required
               />
@@ -168,7 +168,7 @@ const AddFood = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-green-800 font-semibold mb-1 text-sm">
+              <label className="block text-green-800 dark:text-green-400 font-semibold mb-1 text-sm">
                 Quantity *
               </label>
               <input
@@ -177,13 +177,13 @@ const AddFood = () => {
                 value={formData.quantity}
                 onChange={handleChange}
                 min="1"
-                className="w-full border border-green-300 rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
+                className="w-full border border-green-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
                 placeholder="e.g., 3"
                 required
               />
             </div>
             <div>
-              <label className="block text-green-800 font-semibold mb-1 text-sm">
+              <label className="block text-green-800 dark:text-green-400 font-semibold mb-1 text-sm">
                 Pickup Location *
               </label>
               <input
@@ -191,7 +191,7 @@ const AddFood = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full border border-green-300 rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
+                className="w-full border border-green-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
                 placeholder="e.g., Dhanmondi, Dhaka"
                 required
               />
@@ -199,7 +199,7 @@ const AddFood = () => {
           </div>
 
           <div>
-            <label className="block text-green-800 font-semibold mb-1 text-sm">
+            <label className="block text-green-800 dark:text-green-400 font-semibold mb-1 text-sm">
               Expire Date *
             </label>
             <input
@@ -207,24 +207,24 @@ const AddFood = () => {
               name="expireDate"
               value={formData.expireDate}
               onChange={handleChange}
-              className="w-full border border-green-300 rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
+              className="w-full border border-green-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
               required
               min={todayDate}
             />
-            <p className="text-xs text-gray-600 mt-1">
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
               Must be today or a future date
             </p>
           </div>
 
           <div>
-            <label className="block text-green-800 font-semibold mb-1 text-sm">
+            <label className="block text-green-800 dark:text-green-400 font-semibold mb-1 text-sm">
               Additional Notes
             </label>
             <textarea
               name="notes"
               value={formData.notes}
               onChange={handleChange}
-              className="w-full border border-green-300 rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
+              className="w-full border border-green-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-3 py-2.5 text-sm focus:outline-green-500 focus:border-green-500"
               rows={3}
               placeholder="Any special instructions, ingredients, or notes..."
             ></textarea>

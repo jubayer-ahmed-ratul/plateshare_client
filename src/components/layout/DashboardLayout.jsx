@@ -37,7 +37,7 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-themed-secondary">
       {/* Top Navbar */}
       <nav className="bg-[#0c4428] text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-full px-4 lg:px-6">
@@ -51,10 +51,7 @@ const DashboardLayout = () => {
                 {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
               
-              <NavLink to="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <span className="text-[#0c4428] font-bold text-lg">P</span>
-                </div>
+              <NavLink to="/" className="flex items-center">
                 <span className="text-xl font-bold text-white">PlateShare</span>
               </NavLink>
             </div>
@@ -138,13 +135,13 @@ const DashboardLayout = () => {
       <div className="flex">
         {/* Sidebar */}
         <aside className={`
-          fixed lg:static inset-y-0 left-0 z-40 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
+          fixed lg:static inset-y-0 left-0 z-40 w-64 bg-themed-card shadow-lg transform transition-transform duration-300 ease-in-out
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
           mt-16 lg:mt-0
         `}>
           <div className="flex flex-col h-full pt-6">
             <div className="px-6 mb-8">
-              <h2 className="text-lg font-semibold text-gray-800">Dashboard</h2>
+              <h2 className="text-lg font-semibold text-themed-primary">Dashboard</h2>
             </div>
             
             <nav className="flex-1 px-4 space-y-2">
@@ -156,8 +153,8 @@ const DashboardLayout = () => {
                   className={({ isActive }) =>
                     `flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
                       isActive
-                        ? 'bg-green-100 text-green-800 font-semibold'
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
+                        ? 'bg-green-100 text-green-800 font-semibold dark:bg-green-800 dark:text-green-100'
+                        : 'text-themed-secondary hover:bg-themed-tertiary hover:text-themed-primary'
                     }`
                   }
                 >
@@ -168,10 +165,10 @@ const DashboardLayout = () => {
             </nav>
 
             {/* Back to Main Site */}
-            <div className="p-4 border-t border-gray-200">
+            <div className="p-4 border-t border-themed">
               <NavLink
                 to="/"
-                className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 hover:text-gray-800 rounded-lg transition-colors duration-200"
+                className="flex items-center space-x-3 px-4 py-3 text-themed-secondary hover:bg-themed-tertiary hover:text-themed-primary rounded-lg transition-colors duration-200"
               >
                 <Home size={20} />
                 <span>Back to Main Site</span>

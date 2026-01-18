@@ -4,6 +4,7 @@ import './index.css';
 import Rootlayout from './components/layout/rootlayout.jsx';
 import DashboardLayout from './components/layout/DashboardLayout.jsx';
 import AuthProvider from './components/context/AuthProvider.jsx';
+import { ThemeProvider } from './components/context/ThemeProvider.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import Home from './components/Home/Home.jsx';
@@ -54,8 +55,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ThemeProvider>
   </StrictMode>
 );

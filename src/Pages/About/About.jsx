@@ -27,7 +27,8 @@ const About = () => {
     {
       icon: Heart,
       title: 'Community First',
-      description: 'We believe in the power of community to solve local problems and create lasting connections.'
+      description: 'We believe in the power of community to solve local problems and create lasting connections.',
+      image: 'https://i.ibb.co/KccQ4bzw/image.png'
     },
     {
       icon: Leaf,
@@ -95,7 +96,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-green-100 py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-green-900 mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6" style={{ color: '#14532d' }}>
             About PlateShare
           </h1>
           <p className="text-xl sm:text-2xl text-green-800 max-w-3xl mx-auto leading-relaxed">
@@ -131,13 +132,12 @@ const About = () => {
                 Join Our Community
               </button>
             </div>
-            <div className="relative">
+            <div>
               <img
-                src="https://i.ibb.co/KjWbZFT7/foodshare2-min.jpg"
+                src="https://i.ibb.co/KccQ4bzw/image.png"
                 alt="Community food sharing"
                 className="w-full h-96 object-cover rounded-2xl shadow-lg"
               />
-              <div className="absolute inset-0 bg-green-900 bg-opacity-20 rounded-2xl"></div>
             </div>
           </div>
         </div>
@@ -172,7 +172,11 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-green-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                <value.icon size={48} className="text-green-600 mb-6" />
+                {value.image ? (
+                  <img src={value.image} alt={value.title} className="w-full h-32 object-cover rounded-lg mb-6" />
+                ) : (
+                  <value.icon size={48} className="text-green-600 mb-6" />
+                )}
                 <h3 className="text-2xl font-bold text-green-900 mb-4">{value.title}</h3>
                 <p className="text-gray-700 leading-relaxed">{value.description}</p>
               </div>

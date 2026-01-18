@@ -284,7 +284,7 @@ const AvailableFoods = () => {
           <button
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-gray-300 hover:bg-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed text-gray-700 rounded-lg font-semibold transition-colors"
+            className="px-4 py-2 bg-gray-300 hover:bg-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed text-black rounded-lg font-semibold transition-colors"
           >
             Previous
           </button>
@@ -297,7 +297,7 @@ const AvailableFoods = () => {
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 currentPage === page
                   ? 'bg-green-600 text-white'
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+                  : 'bg-gray-200 hover:bg-gray-300 text-black'
               }`}
             >
               {page}
@@ -307,7 +307,7 @@ const AvailableFoods = () => {
           <button
             onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-gray-300 hover:bg-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed text-gray-700 rounded-lg font-semibold transition-colors"
+            className="px-4 py-2 bg-gray-300 hover:bg-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed text-black rounded-lg font-semibold transition-colors"
           >
             Next
           </button>
