@@ -7,6 +7,7 @@ import AuthProvider from './components/context/AuthProvider.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import Home from './components/Home/Home.jsx';
+import About from './Pages/About/About.jsx';
 import AddFood from './Pages/AddFood/AddFood.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PrivateRoute from './Routes/PrivateRoute.jsx';
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
     element: <Rootlayout />,
     children: [
       { path: "/", element: <Home /> },
+      { path: "/about", element: <About /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/available-foods", element: <AvailableFoods></AvailableFoods> },
