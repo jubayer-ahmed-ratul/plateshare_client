@@ -27,7 +27,7 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             className="bg-white text-[#0c4428] px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
-            onClick={() => navigate("/add-food")}
+            onClick={() => navigate("/dashboard/add-food")}
           >
             Start Sharing
           </button>

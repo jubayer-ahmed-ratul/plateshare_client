@@ -21,7 +21,7 @@ const CallToAction = () => {
           {user ? (
             <>
               <button
-                onClick={() => navigate('/add-food')}
+                onClick={() => navigate('/dashboard/add-food')}
                 className="bg-green-900 hover:bg-green-800 text-white px-8 py-4 rounded-2xl font-bold text-lg 
                            transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
@@ -38,7 +38,7 @@ const CallToAction = () => {
           ) : (
             <>
               <button
-                onClick={() => navigate('/register')}
+                onClick={() => navigate('/dashboard/add-food')}
                 className="bg-green-900 hover:bg-green-800 text-white px-8 py-4 rounded-2xl font-bold text-lg 
                            transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >

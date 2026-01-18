@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext"; 
 import { NavLink, useNavigate } from "react-router-dom";
-import { ChevronDown, User, LogOut, Plus, List, Heart } from "lucide-react";
+import { ChevronDown, User, LogOut, Plus, List, Heart, Home } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -18,9 +18,9 @@ const Navbar = () => {
 
   // 5 routes when logged in (3 public + 2 protected)
   const protectedNavLinks = [
-    { name: "Add Food", path: "/add-food", icon: Plus },
-    { name: "Manage Foods", path: "/manage-foods", icon: List },
-    { name: "My Requests", path: "/my-req", icon: Heart },
+    { name: "Add Food", path: "/dashboard/add-food", icon: Plus },
+    { name: "Manage Foods", path: "/dashboard/manage-foods", icon: List },
+    { name: "My Requests", path: "/dashboard/my-requests", icon: Heart },
   ];
 
   const getActiveClass = ({ isActive }) =>
@@ -115,13 +115,25 @@ const Navbar = () => {
                     {/* Profile Link */}
                     <button
                       onClick={() => {
-                        navigate('/profile');
+                        navigate('/dashboard/profile');
                         setIsProfileDropdownOpen(false);
                       }}
                       className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2 transition-colors"
                     >
                       <User size={16} />
-                      <span>View Profile</span>
+                      <span>Profile</span>
+                    </button>
+                    
+                    {/* Dashboard Home */}
+                    <button
+                      onClick={() => {
+                        navigate('/dashboard');
+                        setIsProfileDropdownOpen(false);
+                      }}
+                      className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2 transition-colors"
+                    >
+                      <Home size={16} />
+                      <span>Dashboard Home</span>
                     </button>
                     
                     {/* Mobile Protected Routes */}

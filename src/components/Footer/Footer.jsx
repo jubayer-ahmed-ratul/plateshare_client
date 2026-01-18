@@ -27,7 +27,7 @@ const Footer = () => {
               <NavLink to="/available-foods" className="text-white/80 hover:text-white transition-colors text-sm">
                 Available Foods
               </NavLink>
-              <NavLink to="/add-food" className="text-white/80 hover:text-white transition-colors text-sm">
+              <NavLink to="/dashboard/add-food" className="text-white/80 hover:text-white transition-colors text-sm">
                 Share Food
               </NavLink>
               <NavLink to="/about" className="text-white/80 hover:text-white transition-colors text-sm">
