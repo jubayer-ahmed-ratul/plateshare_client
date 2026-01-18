@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext"; 
 import { useTheme } from "../context/ThemeProvider";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ChevronDown, User, LogOut, Plus, List, Heart, Home, Moon, Sun } from "lucide-react";
+import { ChevronDown, User, LogOut, Home, Moon, Sun } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -20,9 +20,9 @@ const Navbar = () => {
 
   // 5 routes when logged in (3 public + 2 protected)
   const protectedNavLinks = [
-    { name: "Add Food", path: "/dashboard/add-food", icon: Plus },
-    { name: "Manage Foods", path: "/dashboard/manage-foods", icon: List },
-    { name: "My Requests", path: "/dashboard/my-requests", icon: Heart },
+    { name: "Add Food", path: "/dashboard/add-food" },
+    { name: "Manage Foods", path: "/dashboard/manage-foods" },
+    { name: "My Requests", path: "/dashboard/my-requests" },
   ];
 
   const getActiveClass = ({ isActive }) =>
@@ -65,12 +65,9 @@ const Navbar = () => {
               <NavLink 
                 key={link.path} 
                 to={link.path} 
-                className={({ isActive }) => 
-                  `flex items-center space-x-1 px-3 py-2 transition-all duration-200 ${getActiveClass({ isActive })}`
-                }
+                className={getActiveClass}
               >
-                <link.icon size={16} />
-                <span>{link.name}</span>
+                {link.name}
               </NavLink>
             ))}
           </div>
@@ -153,10 +150,9 @@ const Navbar = () => {
                             navigate(link.path);
                             setIsProfileDropdownOpen(false);
                           }}
-                          className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2 transition-colors"
+                          className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                         >
-                          <link.icon size={16} />
-                          <span>{link.name}</span>
+                          {link.name}
                         </button>
                       ))}
                     </div>
@@ -185,7 +181,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                   to="/register"
-                  className="bg-white hover:bg-gray-100 text-[#0c4428] px-4 py-2 rounded-lg font-semibold transition-colors"
+                  className="register-btn bg-white hover:bg-gray-100 dark:bg-white dark:hover:bg-gray-200 text-[#0c4428] dark:text-black px-4 py-2 rounded-lg font-semibold transition-colors"
                 >
                   Register
                 </NavLink>
@@ -237,7 +233,7 @@ const Navbar = () => {
                   <NavLink
                     to="/register"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block mx-4 py-2 px-4 bg-white text-[#0c4428] rounded-lg font-semibold text-center"
+                    className="register-btn block mx-4 py-2 px-4 bg-white dark:bg-white hover:bg-gray-100 dark:hover:bg-gray-200 text-[#0c4428] dark:text-black rounded-lg font-semibold text-center transition-colors"
                   >
                     Register
                   </NavLink>

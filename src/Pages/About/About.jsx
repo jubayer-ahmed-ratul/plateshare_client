@@ -27,8 +27,7 @@ const About = () => {
     {
       icon: Heart,
       title: 'Community First',
-      description: 'We believe in the power of community to solve local problems and create lasting connections.',
-      image: 'https://i.ibb.co/KccQ4bzw/image.png'
+      description: 'We believe in the power of community to solve local problems and create lasting connections.'
     },
     {
       icon: Leaf,
@@ -51,19 +50,19 @@ const About = () => {
     {
       name: 'Sarah Johnson',
       role: 'Founder & CEO',
-      image: 'https://ui-avatars.com/api/?name=Sarah+Johnson&background=0c4428&color=ffffff&size=128',
+      image: 'https://i.ibb.co/Ld61KCvs/image.png',
       description: 'Passionate about community building and sustainable living.'
     },
     {
       name: 'Mike Chen',
       role: 'Head of Technology',
-      image: 'https://ui-avatars.com/api/?name=Mike+Chen&background=0c4428&color=ffffff&size=128',
+      image: 'https://i.ibb.co/F4TB4bKg/image.png',
       description: 'Expert in building scalable platforms that connect people.'
     },
     {
       name: 'Emma Davis',
       role: 'Community Manager',
-      image: 'https://ui-avatars.com/api/?name=Emma+Davis&background=0c4428&color=ffffff&size=128',
+      image: 'https://i.ibb.co/Mx37msb8/image.png',
       description: 'Dedicated to fostering safe and inclusive communities.'
     }
   ];
@@ -172,11 +171,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-green-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                {value.image ? (
-                  <img src={value.image} alt={value.title} className="w-full h-32 object-cover rounded-lg mb-6" />
-                ) : (
-                  <value.icon size={48} className="text-green-600 mb-6" />
-                )}
+                <value.icon size={48} className="text-green-600 mb-6" />
                 <h3 className="text-2xl font-bold text-green-900 mb-4">{value.title}</h3>
                 <p className="text-gray-700 leading-relaxed">{value.description}</p>
               </div>

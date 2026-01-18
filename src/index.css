@@ -256,3 +256,24 @@ html.dark .stats-number.text-green-900 {
   background-color: white !important;
   color: black !important;
 }
+/* Register button dark mode fix */
+.register-btn {
+  background-color: white !important;
+  color: black !important;
+}
+
+.register-btn:hover {
+  background-color: #f3f4f6 !important;
+  color: black !important;
+}
+
+/* More specific dark mode register button fix */
+.dark .register-btn {
+  background-color: white !important;
+  color: black !important;
+}
+
+.dark .register-btn:hover {
+  background-color: #f3f4f6 !important;
+  color: black !important;
+}

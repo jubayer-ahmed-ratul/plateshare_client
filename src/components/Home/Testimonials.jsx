@@ -6,19 +6,19 @@ const Testimonials = () => {
       name: 'Sarah Johnson',
       role: 'Community Member',
       text: 'PlateShare helped me find fresh meals when I needed them most. The community here is amazing!',
-      avatar: 'https://ui-avatars.com/api/?name=Sarah+Johnson&background=0c4428&color=ffffff',
+      avatar: 'https://i.ibb.co/Ld61KCvs/image.png',
     },
     {
       name: 'Mike Chen',
       role: 'Food Donor',
       text: 'I love being able to share my extra food instead of throwing it away. It feels great to help others.',
-      avatar: 'https://ui-avatars.com/api/?name=Mike+Chen&background=0c4428&color=ffffff',
+      avatar: 'https://i.ibb.co/F4TB4bKg/image.png',
     },
     {
       name: 'Emma Davis',
       role: 'Regular User',
       text: 'The app is so easy to use and the pickup process is seamless. Highly recommend to everyone!',
-      avatar: 'https://ui-avatars.com/api/?name=Emma+Davis&background=0c4428&color=ffffff',
+      avatar: 'https://i.ibb.co/Mx37msb8/image.png',
     },
   ];
 
