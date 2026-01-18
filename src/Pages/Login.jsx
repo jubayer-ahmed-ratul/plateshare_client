@@ -52,7 +52,7 @@ const Login = () => {
             <label className="label">Email</label>
             <input
               type="email"
-              className="input w-full"
+              className="auth-input input w-full"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -62,14 +62,14 @@ const Login = () => {
             <label className="label">Password</label>
             <input
               type="password"
-              className="input w-full"
+              className="auth-input input w-full"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
 
-            <button type="submit" className="btn btn-primary mt-4 w-full">
+            <button type="submit" className="auth-button btn btn-primary mt-4 w-full">
               Login
             </button>
 
@@ -91,7 +91,7 @@ const Login = () => {
             <button
               type="button"
               onClick={handleGoogleLogin}
-              className="btn bg-white text-black border-[#e5e5e5] w-full flex items-center justify-center gap-2"
+              className="google-auth-btn btn bg-white text-black border-[#e5e5e5] w-full flex items-center justify-center gap-2"
             >
               {/* Google logo SVG */}
               <svg

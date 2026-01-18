@@ -277,3 +277,106 @@ html.dark .stats-number.text-green-900 {
   background-color: #f3f4f6 !important;
   color: black !important;
 }
+/* Filter dropdown dark mode fix */
+.dark select {
+  background-color: #374151 !important;
+  color: white !important;
+  border-color: #4b5563 !important;
+}
+
+.dark input[type="text"] {
+  background-color: #374151 !important;
+  color: white !important;
+  border-color: #4b5563 !important;
+}
+
+/* Specific class for filter dropdowns */
+.filter-dropdown {
+  background-color: white;
+  color: black;
+}
+
+.dark .filter-dropdown {
+  background-color: #374151 !important;
+  color: white !important;
+  border-color: #4b5563 !important;
+}
+/* Login and Registration form inputs - white in light mode, black in dark mode */
+.auth-input {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.auth-input:focus {
+  background-color: white !important;
+  color: black !important;
+  border-color: #10b981 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+.auth-input::placeholder {
+  color: black !important;
+}
+
+/* Dark mode - black background, white text */
+.dark .auth-input {
+  background-color: black !important;
+  color: white !important;
+  border-color: #d1d5db !important;
+}
+
+.dark .auth-input:focus {
+  background-color: black !important;
+  color: white !important;
+  border-color: #10b981 !important;
+}
+
+.dark .auth-input::placeholder {
+  color: white !important;
+}
+
+/* Auth buttons - use brand green color */
+.auth-button {
+  background-color: #0c4428 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.auth-button:hover {
+  background-color: #065f46 !important;
+  color: white !important;
+}
+
+.dark .auth-button {
+  background-color: #0c4428 !important;
+  color: white !important;
+}
+
+.dark .auth-button:hover {
+  background-color: #065f46 !important;
+  color: white !important;
+}
+/* Google auth buttons - always white background */
+.google-auth-btn {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #e5e5e5 !important;
+}
+
+.google-auth-btn:hover {
+  background-color: #f9fafb !important;
+  color: black !important;
+}
+
+.dark .google-auth-btn {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #e5e5e5 !important;
+}
+
+.dark .google-auth-btn:hover {
+  background-color: #f9fafb !important;
+  color: black !important;
+}

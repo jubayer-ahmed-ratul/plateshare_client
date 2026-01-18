@@ -134,7 +134,7 @@ const AvailableFoods = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Location Filter */}
           <div>
-            <label className="block text-sm font-semibold text-green-900 mb-2">
+            <label className="block text-sm font-semibold text-green-900 dark:text-white mb-2">
               <Filter size={16} className="inline mr-1" />
               Filter by Location
             </label>
@@ -143,44 +143,44 @@ const AvailableFoods = () => {
               placeholder="Enter location..."
               value={locationFilter}
               onChange={(e) => setLocationFilter(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="filter-dropdown w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
           {/* Quantity Filter */}
           <div>
-            <label className="block text-sm font-semibold text-green-900 mb-2">
+            <label className="block text-sm font-semibold text-green-900 dark:text-white mb-2">
               <Filter size={16} className="inline mr-1" />
               Filter by Quantity
             </label>
             <select
               value={quantityFilter}
               onChange={(e) => setQuantityFilter(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="filter-dropdown w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-black dark:text-white"
             >
-              <option value="">All Quantities</option>
-              <option value="low">1-2 portions</option>
-              <option value="medium">3-5 portions</option>
-              <option value="high">5+ portions</option>
+              <option value="" style={{ color: 'black' }}>All Quantities</option>
+              <option value="low" style={{ color: 'black' }}>1-2 portions</option>
+              <option value="medium" style={{ color: 'black' }}>3-5 portions</option>
+              <option value="high" style={{ color: 'black' }}>5+ portions</option>
             </select>
           </div>
 
           {/* Sort Options */}
           <div>
-            <label className="block text-sm font-semibold text-green-900 mb-2">
+            <label className="block text-sm font-semibold text-green-900 dark:text-white mb-2">
               <SortAsc size={16} className="inline mr-1" />
               Sort by
             </label>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="filter-dropdown w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-black dark:text-white"
             >
-              <option value="newest">Newest First</option>
-              <option value="oldest">Oldest First</option>
-              <option value="quantity-high">Quantity: High to Low</option>
-              <option value="quantity-low">Quantity: Low to High</option>
-              <option value="name">Name: A to Z</option>
+              <option value="newest" style={{ color: 'black' }}>Newest First</option>
+              <option value="oldest" style={{ color: 'black' }}>Oldest First</option>
+              <option value="quantity-high" style={{ color: 'black' }}>Quantity: High to Low</option>
+              <option value="quantity-low" style={{ color: 'black' }}>Quantity: Low to High</option>
+              <option value="name" style={{ color: 'black' }}>Name: A to Z</option>
             </select>
           </div>
 

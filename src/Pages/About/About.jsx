@@ -95,7 +95,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-green-100 py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6" style={{ color: '#14532d' }}>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-6" style={{ color: '#14532d' }}>
             About PlateShare
           </h1>
           <p className="text-xl sm:text-2xl text-green-800 max-w-3xl mx-auto leading-relaxed">

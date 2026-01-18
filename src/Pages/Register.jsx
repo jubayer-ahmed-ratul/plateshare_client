@@ -74,33 +74,40 @@ const Register = () => {
       <div className="card bg-base-100 w-full max-w-[400px] shadow-2xl">
         <div className="card-body">
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <label className="label">Full Name</label>
             <input
               type="text"
               placeholder="Full Name"
-              className="input input-bordered w-full"
+              className="auth-input input input-bordered w-full"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            
+            <label className="label">Photo URL</label>
             <input
               type="text"
               placeholder="Photo URL"
-              className="input input-bordered w-full"
+              className="auth-input input input-bordered w-full"
               value={photoURL}
               onChange={(e) => setPhotoURL(e.target.value)}
             />
+            
+            <label className="label">Email</label>
             <input
               type="email"
               placeholder="Email"
-              className="input input-bordered w-full"
+              className="auth-input input input-bordered w-full"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            
+            <label className="label">Password</label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="input input-bordered w-full pr-10"
+                className="auth-input input input-bordered w-full pr-10"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -115,7 +122,7 @@ const Register = () => {
 
             {error && <p className="text-red-500 text-sm -mt-2">{error}</p>}
 
-            <button type="submit" className="btn btn-primary w-full mt-2">
+            <button type="submit" className="auth-button btn btn-primary w-full mt-2">
               Register
             </button>
           </form>
@@ -125,7 +132,7 @@ const Register = () => {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="btn bg-white text-black border w-full flex items-center justify-center gap-2"
+            className="google-auth-btn btn bg-white text-black border w-full flex items-center justify-center gap-2"
           >
             <svg
               aria-label="Google logo"
