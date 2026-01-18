@@ -33,7 +33,7 @@ const HeroSection = () => {
   }, [slides.length]);
 
   return (
-    <section className="hero-section relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className="hero-section relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Images */}
       {slides.map((slide, index) => (
         <div
@@ -66,7 +66,7 @@ const HeroSection = () => {
           </button>
           
           <button
-            className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-[#0c4428] transition-all duration-200"
+            className="browse-foods-btn border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:!text-black transition-all duration-200"
             onClick={() => navigate("/available-foods")}
           >
             Browse Foods

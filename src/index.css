@@ -250,3 +250,9 @@ html.dark .stats-number.text-green-900 {
 
 
 
+
+/* Browse Foods button hover fix */
+.browse-foods-btn:hover {
+  background-color: white !important;
+  color: black !important;
+}
