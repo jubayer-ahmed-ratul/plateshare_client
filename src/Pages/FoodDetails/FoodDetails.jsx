@@ -179,8 +179,8 @@ const FoodDetails = () => {
 
   useEffect(() => {
     if (!user) {
-      toast.info("Please login to view food details.");
-      navigate("/login");
+      // Allow public access but limit functionality
+      console.log("Public access - limited functionality");
     }
   }, [user, navigate]);
 
@@ -190,11 +190,13 @@ const FoodDetails = () => {
         const response = await axios.get(`https://plateshare-api-server.vercel.app/food/${id}`);
         setFood(response.data);
         
-        setFormData(prev => ({
-          ...prev,
-          maxQuantity: response.data.food_quantity,
-          quantityRequested: Math.min(prev.quantityRequested, response.data.food_quantity)
-        }));
+        if (user) {
+          setFormData(prev => ({
+            ...prev,
+            maxQuantity: response.data.food_quantity,
+            quantityRequested: Math.min(prev.quantityRequested, response.data.food_quantity)
+          }));
+        }
       } catch (error) {
         console.error("Error fetching food details:", error);
         toast.error("Failed to load food details.");
@@ -202,7 +204,7 @@ const FoodDetails = () => {
         setLoading(false);
       }
     };
-    if (user) fetchFood();
+    fetchFood();
   }, [id, user]);
 
   useEffect(() => {
@@ -359,52 +361,126 @@ const FoodDetails = () => {
     <div className="px-4 sm:px-6 lg:px-20 mx-auto py-10 relative">
       <ToastContainer />
       
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-green-900 mb-6 text-center">
           {food.food_name}
         </h2>
         
-        <div className="flex flex-col md:flex-row gap-6">
+        {/* Single Image Section */}
+        <div className="mb-8">
           <img
             src={food.food_image}
             alt={food.food_name}
-            className="w-full md:w-1/2 h-64 md:h-80 rounded-2xl object-cover"
+            className="w-full h-64 md:h-80 rounded-2xl object-cover shadow-md mx-auto"
           />
-          
-          <div className="flex-1 flex flex-col gap-4">
-            <p className="text-lg">
-              <span className="font-semibold text-green-700">Quantity Available:</span> 
-              <span className={`ml-2 ${food.food_quantity === 0 ? 'text-red-600 font-bold' : ''}`}>
-                {food.food_quantity}
-              </span>
-            </p>
-            
-            <p className="text-lg flex items-center gap-1">
-              <MapPin className="w-5 h-5 text-green-700" />
-              <span className="font-semibold text-green-700">Pickup Location:</span> 
-              <span className="ml-2">{food.pickup_location}</span>
-            </p>
-            
-            <p className="text-lg">
-              <span className="font-semibold text-green-700">Expires:</span> 
-              <span className="ml-2">{new Date(food.expire_date).toLocaleDateString()}</span>
-            </p>
-            
-            {food.additional_notes && (
-              <p className="text-lg">
-                <span className="font-semibold text-green-700">Notes:</span> 
-                <span className="ml-2">{food.additional_notes}</span>
-              </p>
-            )}
-            
-            <p className="text-lg">
-              <span className="font-semibold text-green-700">Donated by:</span> 
-              <span className="ml-2">{food.donator_name}</span>
-            </p>
+        </div>
 
-            {user.email !== food.donator_email && food.food_status === "Available" && food.food_quantity > 0 && (
+        {/* Overview / Description Section */}
+        <div className="mb-8 bg-green-50 rounded-2xl p-6">
+          <h3 className="text-2xl font-semibold text-green-900 mb-4">Overview</h3>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            {food.additional_notes || 
+              `${food.food_name} is a delicious and fresh food item available for sharing with the community. 
+              This nutritious meal has been prepared with care and is ready for pickup. Perfect for individuals 
+              or families looking for a quality meal. The donor has ensured that this food meets safety standards 
+              and is suitable for consumption.`
+            }
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+              Fresh
+            </span>
+            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
+              Ready to Eat
+            </span>
+            <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">
+              Community Shared
+            </span>
+          </div>
+        </div>
+
+        {/* Key Information / Specs / Rules Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          {/* Food Specifications */}
+          <div className="bg-white border-2 border-green-200 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold text-green-900 mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-600 rounded-full"></span>
+              Food Specifications
+            </h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="font-medium text-gray-700">Quantity Available:</span>
+                <span className={`font-bold ${food.food_quantity === 0 ? 'text-red-600' : 'text-green-600'}`}>
+                  {food.food_quantity} portions
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="font-medium text-gray-700">Expiry Date:</span>
+                <span className="font-semibold text-gray-800">
+                  {new Date(food.expire_date).toLocaleDateString()}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="font-medium text-gray-700">Food Status:</span>
+                <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                  food.food_status === 'Available' 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-red-100 text-red-800'
+                }`}>
+                  {food.food_status}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="font-medium text-gray-700">Donated by:</span>
+                <span className="font-semibold text-gray-800">{food.donator_name}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Pickup Information & Rules */}
+          <div className="bg-white border-2 border-blue-200 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold text-blue-900 mb-4 flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-blue-600" />
+              Pickup Information & Rules
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <span className="font-medium text-gray-700 block mb-1">Pickup Location:</span>
+                <span className="text-gray-800 bg-gray-50 px-3 py-2 rounded-lg block">
+                  {food.pickup_location}
+                </span>
+              </div>
+              
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                <h4 className="font-semibold text-yellow-800 mb-2">Important Rules:</h4>
+                <ul className="text-sm text-yellow-700 space-y-1">
+                  <li>• Please arrive on time for pickup</li>
+                  <li>• Bring your own container if needed</li>
+                  <li>• Contact donor before pickup</li>
+                  <li>• Check food quality before consuming</li>
+                  <li>• Be respectful and grateful</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Action Buttons Section */}
+        <div className="bg-gray-50 rounded-2xl p-6">
+          {!user ? (
+            <div className="text-center">
+              <p className="text-gray-600 mb-4">Please login to request this food item</p>
               <button
-                className={`mt-6 w-full font-semibold py-2.5 rounded-lg text-lg transition-colors ${
+                onClick={() => navigate('/login')}
+                className="bg-green-800 hover:bg-green-900 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+              >
+                Login to Request Food
+              </button>
+            </div>
+          ) : user.email !== food.donator_email && food.food_status === "Available" && food.food_quantity > 0 ? (
+            <div className="text-center">
+              <button
+                className={`w-full max-w-md font-semibold py-3 rounded-lg text-lg transition-colors ${
                   alreadyRequested 
                     ? "bg-gray-400 cursor-not-allowed text-gray-600" 
                     : "bg-green-800 hover:bg-green-900 text-white"
@@ -415,22 +491,22 @@ const FoodDetails = () => {
                 }}
                 disabled={alreadyRequested}
               >
-                {alreadyRequested ? "Already Requested" : "Request Food"}
+                {alreadyRequested ? "Already Requested" : "Request This Food"}
               </button>
-            )}
-
-            {food.food_status !== "Available" && (
-              <p className="text-red-600 font-semibold mt-3 text-center py-2 bg-red-50 rounded-lg">
-                This food is no longer available.
-              </p>
-            )}
-
-            {food.food_quantity === 0 && food.food_status === "Available" && (
-              <p className="text-orange-600 font-semibold mt-3 text-center py-2 bg-orange-50 rounded-lg">
-                All portions have been requested. Waiting for donor confirmation.
-              </p>
-            )}
-          </div>
+            </div>
+          ) : food.food_status !== "Available" ? (
+            <p className="text-red-600 font-semibold text-center py-3 bg-red-50 rounded-lg">
+              This food is no longer available.
+            </p>
+          ) : food.food_quantity === 0 && food.food_status === "Available" ? (
+            <p className="text-orange-600 font-semibold text-center py-3 bg-orange-50 rounded-lg">
+              All portions have been requested. Waiting for donor confirmation.
+            </p>
+          ) : user.email === food.donator_email ? (
+            <p className="text-blue-600 font-semibold text-center py-3 bg-blue-50 rounded-lg">
+              This is your food donation. Manage requests below.
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -443,7 +519,7 @@ const FoodDetails = () => {
         />
       )}
 
-      {isOwner && (
+      {isOwner && user && (
         <div className="mt-8 max-w-6xl mx-auto">
           <h3 className="text-2xl font-semibold mb-6 text-green-900 text-center">
             Food Requests Management

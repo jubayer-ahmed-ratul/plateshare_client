@@ -73,6 +73,19 @@ const Login = () => {
               Login
             </button>
 
+            {/* Demo Credential Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setEmail("ratul@gmail.com");
+                setPassword("rAtul12#");
+                toast.info("Demo credentials filled! Click Login to continue.");
+              }}
+              className="btn btn-outline btn-secondary mt-2 w-full"
+            >
+              🎯 Use Demo Credentials
+            </button>
+
             <div className="divider">OR</div>
 
             <button

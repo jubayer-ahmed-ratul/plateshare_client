@@ -1,75 +1,45 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const slides = [
-  {
-    image: "https://i.ibb.co/KjWbZFT7/foodshare2-min.jpg",
-    heading: "Share Your Surplus. Help Your Community.",
-    text: "Join PlateShare to give away or receive food – because no one should go hungry.",
-  },
-  {
-    image: "https://i.ibb.co/1JGHRrcL/foodshare1.webp",
-    heading: "Reduce Waste. Feed Someone Today.",
-    text: "Every leftover meal can make a difference. Post it and help your neighbors.",
-  },
-  {
-    image:
-      "https://i.ibb.co/9m1Z7DPh/jaz-blakeston-petch-1-M1p-PWo-TKfw-unsplash-min.jpg",
-    heading: "Connect. Share. Care.",
-    text: "PlateShare helps communities come together by sharing food with those in need.",
-  },
-];
-
 const HeroSection = () => {
-  const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 3000); 
-    return () => clearInterval(interval);
-  }, []);
-
-  const { image, heading, text } = slides[current];
-
   return (
-    <section
-      className="relative w-full h-[70vh] min-h-[400px] flex items-center justify-center text-center px-4 sm:px-6 md:px-10"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        transition: "background-image 1s ease-in-out",
-      }}
-    >
-     
-      <div className="absolute inset-0 bg-white/60"></div>
-
-    
-      <motion.div
-        key={current}
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 max-w-3xl"
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(https://i.ibb.co/KjWbZFT7/foodshare2-min.jpg)` }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-snug">
-          {heading}
+        <div className="absolute inset-0 bg-black/40"></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center px-4 sm:px-6 md:px-10 max-w-4xl">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white drop-shadow-lg mb-6">
+          Share Your Surplus. Help Your Community.
         </h1>
-        <p className="text-md sm:text-lg md:text-xl mt-4 sm:mt-6 md:mt-10 mb-3 sm:mb-4 md:mb-5">
-          {text}
+
+        <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-8">
+          Join PlateShare to give away or receive food – because no one should go hungry.
         </p>
-           <motion.button
-      className="btn btn-primary px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-[17px] mt-3 sm:mt-4 md:mt-5"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => navigate("/available-foods")}
-    >
-      View All Foods
-    </motion.button>
-      </motion.div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button
+            className="bg-white text-[#0c4428] px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+            onClick={() => navigate("/add-food")}
+          >
+            Start Sharing
+          </button>
+          
+          <button
+            className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-[#0c4428] transition-all duration-200"
+            onClick={() => navigate("/available-foods")}
+          >
+            Browse Foods
+          </button>
+        </div>
+      </div>
     </section>
   );
 };

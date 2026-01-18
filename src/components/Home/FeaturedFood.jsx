@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { MapPin } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { AuthContext } from "../../components/context/AuthContext";
 import { toast } from "react-toastify";
-import { NavLink } from "react-router-dom";
 
 const FeaturedFood = () => {
   const [topFoods, setTopFoods] = useState([]);
@@ -15,8 +14,9 @@ const FeaturedFood = () => {
     const fetchTopFoods = async () => {
       try {
         const res = await axios.get(
-          "https://plateshare-api-server.vercel.app/top-foods"
+          `https://plateshare-api-server.vercel.app/top-foods?t=${Date.now()}`
         );
+        console.log("API Response:", res.data);
         setTopFoods(res.data);
       } catch (err) {
         console.error(err);
@@ -27,22 +27,16 @@ const FeaturedFood = () => {
   }, []);
 
   const handleViewDetails = (foodId) => {
-    const targetPath = `/food/${foodId}`; 
-    if (!user) {
-      toast.info("Please login to view details.");
-      navigate("/login", { state: { from: targetPath } });
-    } else {
-      navigate(targetPath);
-    }
+    navigate(`/food/${foodId}`);
   };
 
   return (
-    <div className="px-4 sm:px-6 mb-10 mt-10 lg:px-20 mx-auto">
+    <div id="featured-section" className="px-4 sm:px-6 mb-10 mt-10 lg:px-20 mx-auto">
       <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-green-900 mt-5">
         Featured Foods
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center">
         {topFoods.length === 0 ? (
           <div className="flex flex-col items-center col-span-full py-20 gap-4">
             <span className="loading loading-spinner text-success text-4xl"></span>
@@ -54,9 +48,9 @@ const FeaturedFood = () => {
           topFoods.map((food) => (
             <div
               key={food._id}
-              className="card bg-base-100 rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105"
+              className="card bg-base-100 rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105 h-full flex flex-col w-full max-w-sm"
             >
-              <figure>
+              <figure className="flex-shrink-0">
                 <img
                   src={food.food_image}
                   alt={food.food_name}
@@ -64,21 +58,41 @@ const FeaturedFood = () => {
                 />
               </figure>
 
-              <div className="card-body">
+              <div className="card-body flex-grow flex flex-col">
                 <h2 className="card-title text-2xl text-green-900">
                   {food.food_name}
                 </h2>
-                <p className="text-xl">
-                  Serves{" "}
-                  <span className="text-green-600 font-bold">
-                    {food.food_quantity}
-                  </span>{" "}
-                  people
+
+                <p className="text-gray-600 text-sm flex-grow">
+                  {food.additional_notes ||
+                    food.food_name +
+                      " - Fresh and delicious food ready for pickup. Perfect for sharing with the community."}
                 </p>
-                <p className="text-green-700 font-bold flex items-center gap-1">
-                  <MapPin /> Pickup: {food.pickup_location}
-                </p>
-                <p>Donor: {food.donator_name}</p>
+
+                <div className="space-y-2 mt-3">
+                  <p className="text-xl">
+                    Serves{" "}
+                    <span className="text-green-600 font-bold">
+                      {food.food_quantity}
+                    </span>{" "}
+                    people
+                  </p>
+                  <p className="text-green-700 font-bold flex items-center gap-1">
+                    <MapPin size={16} /> Pickup: {food.pickup_location}
+                  </p>
+                  <p className="text-gray-700">Donor: {food.donator_name}</p>
+
+                  <div className="flex justify-between items-center text-sm text-gray-500 mt-2">
+                    <span>
+                      {food.expired_date
+                        ? `Expires: ${new Date(food.expired_date).toLocaleDateString()}`
+                        : "Fresh"}
+                    </span>
+                    <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
+                      Available
+                    </span>
+                  </div>
+                </div>
 
                 <div className="card-actions justify-center mt-4">
                   <button
@@ -93,15 +107,14 @@ const FeaturedFood = () => {
           ))
         )}
       </div>
+
       <div className="flex justify-center mt-10">
-  <NavLink to="/available-foods">
-    <button className="btn btn-primary px-8 py-3 text-lg font-bold">
-     Show All
-    </button>
-  </NavLink>
-</div>
-
-
+        <NavLink to="/available-foods">
+          <button className="btn btn-primary px-8 py-3 text-lg font-bold">
+            Show All
+          </button>
+        </NavLink>
+      </div>
     </div>
   );
 };
