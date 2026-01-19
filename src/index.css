@@ -99,6 +99,43 @@ body {
   background-color: var(--card-bg) !important;
 }
 
+/* Custom Toastify styles for green theme */
+.Toastify__toast--success {
+  background-color: #16a34a !important;
+  color: #ffffff !important;
+}
+
+.Toastify__toast--error {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.Toastify__toast--info {
+  background-color: #0891b2 !important;
+  color: #ffffff !important;
+}
+
+.Toastify__toast--warning {
+  background-color: #ea580c !important;
+  color: #ffffff !important;
+}
+
+.Toastify__progress-bar--success {
+  background-color: #ffffff !important;
+}
+
+.Toastify__progress-bar--error {
+  background-color: #ffffff !important;
+}
+
+.Toastify__progress-bar--info {
+  background-color: #ffffff !important;
+}
+
+.Toastify__progress-bar--warning {
+  background-color: #ffffff !important;
+}
+
 .dark .bg-gray-50 {
   background-color: var(--bg-tertiary) !important;
 }

@@ -359,7 +359,22 @@ const FoodDetails = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-20 mx-auto py-10 relative">
-      <ToastContainer />
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        toastStyle={{
+          backgroundColor: '#16a34a',
+          color: '#ffffff'
+        }}
+      />
       
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-green-900 mb-6 text-center">

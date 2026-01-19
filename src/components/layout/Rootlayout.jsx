@@ -22,6 +22,10 @@ const Rootlayout = () => {
         pauseOnHover
         draggable
         theme="colored"
+        toastStyle={{
+          backgroundColor: '#16a34a',
+          color: '#ffffff'
+        }}
       />
 
       <Footer />

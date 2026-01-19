@@ -110,7 +110,22 @@ const AddFood = () => {
 
   return (
     <section className="py-5 flex justify-center items-start bg-themed-secondary min-h-screen">
-      <ToastContainer />
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        toastStyle={{
+          backgroundColor: '#16a34a',
+          color: '#ffffff'
+        }}
+      />
       <div className="w-full max-w-2xl bg-themed-card rounded-2xl shadow-lg p-8">
         <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center text-themed-primary">
           Add Food
