@@ -14,14 +14,14 @@ const CommunityImpact = () => {
       description: 'Building stronger communities by connecting neighbors and fostering a culture of sharing and caring.',
       percentage: '85%',
       metric: 'User Satisfaction',
-      color: 'bg-blue-100 text-blue-800',
+      color: 'bg-green-200 text-green-800',
     },
     {
       title: 'Economic Impact',
       description: 'Helping families save money on groceries while reducing the economic burden of food insecurity.',
       percentage: '$200',
       metric: 'Average Savings',
-      color: 'bg-yellow-100 text-yellow-800',
+      color: 'bg-green-300 text-green-900',
     },
   ];
 

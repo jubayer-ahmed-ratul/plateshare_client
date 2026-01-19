@@ -76,22 +76,22 @@ const DashboardHome = () => {
       title: 'Food Requests Made',
       value: stats.totalRequests,
       icon: Heart,
-      color: 'bg-blue-500',
-      textColor: 'text-blue-600'
+      color: 'bg-green-400',
+      textColor: 'text-green-600'
     },
     {
       title: 'Accepted Requests',
       value: stats.acceptedRequests,
       icon: TrendingUp,
-      color: 'bg-emerald-500',
-      textColor: 'text-emerald-600'
+      color: 'bg-green-700',
+      textColor: 'text-green-800'
     },
     {
       title: 'Pending Requests',
       value: stats.pendingRequests,
       icon: Clock,
-      color: 'bg-yellow-500',
-      textColor: 'text-yellow-600'
+      color: 'bg-green-600',
+      textColor: 'text-green-700'
     }
   ];
 
@@ -195,7 +195,7 @@ const DashboardHome = () => {
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     food.food_status === 'Available' 
                       ? 'bg-green-100 text-green-800' 
-                      : 'bg-gray-100 text-gray-800'
+                      : 'bg-green-50 text-green-700'
                   }`}>
                     {food.food_status}
                   </span>
@@ -206,9 +206,9 @@ const DashboardHome = () => {
         </div>
 
         {/* Recent Food Requests */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        <div className="bg-themed-card rounded-2xl shadow-lg p-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Recent Food Requests</h2>
+            <h2 className="text-xl font-semibold text-themed-primary">Recent Food Requests</h2>
             <button
               onClick={() => navigate('/dashboard/my-requests')}
               className="text-green-600 hover:text-green-700 font-medium text-sm"
@@ -219,11 +219,11 @@ const DashboardHome = () => {
           
           {recentRequests.length === 0 ? (
             <div className="text-center py-8">
-              <Heart size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-gray-500 mb-4">No food requests yet</p>
+              <Heart size={48} className="mx-auto text-themed-tertiary mb-4" />
+              <p className="text-themed-secondary mb-4">No food requests yet</p>
               <button
                 onClick={() => navigate('/available-foods')}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
               >
                 Browse Available Foods
               </button>
@@ -231,7 +231,7 @@ const DashboardHome = () => {
           ) : (
             <div className="space-y-4">
               {recentRequests.map((request) => (
-                <div key={request._id} className="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                <div key={request._id} className="flex items-center space-x-4 p-4 border border-themed rounded-lg hover:bg-themed-tertiary transition-colors">
                   {request.foodDetails?.food_image && (
                     <img
                       src={request.foodDetails.food_image}
@@ -240,10 +240,10 @@ const DashboardHome = () => {
                     />
                   )}
                   <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">
+                    <h3 className="font-medium text-themed-primary">
                       {request.foodDetails?.food_name || 'Food Item'}
                     </h3>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <div className="flex items-center space-x-4 text-sm text-themed-secondary">
                       <span className="flex items-center space-x-1">
                         <Users size={14} />
                         <span>{request.quantityRequested} portions</span>
@@ -258,7 +258,7 @@ const DashboardHome = () => {
                     request.status === 'accepted' 
                       ? 'bg-green-100 text-green-800' 
                       : request.status === 'pending'
-                      ? 'bg-yellow-100 text-yellow-800'
+                      ? 'bg-green-200 text-green-800'
                       : 'bg-red-100 text-red-800'
                   }`}>
                     {request.status}
@@ -271,31 +271,31 @@ const DashboardHome = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
+      <div className="bg-themed-card rounded-2xl shadow-lg p-6">
+        <h2 className="text-xl font-semibold text-themed-primary mb-6">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button
             onClick={() => navigate('/dashboard/add-food')}
-            className="flex items-center space-x-3 p-4 border-2 border-dashed border-green-300 rounded-lg hover:border-green-400 hover:bg-green-50 transition-colors"
+            className="flex items-center space-x-3 p-4 border-2 border-dashed border-green-300 rounded-lg hover:border-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
           >
-            <Plus size={24} className="text-green-600" />
-            <span className="font-medium text-green-600">Share New Food</span>
+            <Plus size={24} className="text-themed-primary" />
+            <span className="font-medium text-themed-primary">Share New Food</span>
           </button>
           
           <button
             onClick={() => navigate('/available-foods')}
-            className="flex items-center space-x-3 p-4 border-2 border-dashed border-blue-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors"
+            className="flex items-center space-x-3 p-4 border-2 border-dashed border-green-400 rounded-lg hover:border-green-500 hover:bg-green-100 dark:hover:bg-green-900/20 transition-colors"
           >
-            <Heart size={24} className="text-blue-600" />
-            <span className="font-medium text-blue-600">Browse Available Foods</span>
+            <Heart size={24} className="text-themed-primary" />
+            <span className="font-medium text-themed-primary">Browse Available Foods</span>
           </button>
           
           <button
             onClick={() => navigate('/dashboard/profile')}
-            className="flex items-center space-x-3 p-4 border-2 border-dashed border-purple-300 rounded-lg hover:border-purple-400 hover:bg-purple-50 transition-colors"
+            className="flex items-center space-x-3 p-4 border-2 border-dashed border-green-500 rounded-lg hover:border-green-600 hover:bg-green-200 dark:hover:bg-green-900/20 transition-colors"
           >
-            <Users size={24} className="text-purple-600" />
-            <span className="font-medium text-purple-600">Update Profile</span>
+            <Users size={24} className="text-themed-primary" />
+            <span className="font-medium text-themed-primary">Update Profile</span>
           </button>
         </div>
       </div>

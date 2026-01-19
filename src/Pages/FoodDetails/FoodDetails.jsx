@@ -119,7 +119,7 @@ const FoodRequestsTable = ({ requests, loading, handleAction, foodQuantity }) =>
               <td className="px-4 py-2 border">
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                   req.status === "pending" 
-                    ? "bg-yellow-100 text-yellow-800" 
+                    ? "bg-green-200 text-green-800" 
                     : req.status === "accepted" 
                     ? "bg-green-100 text-green-800" 
                     : "bg-red-100 text-red-800"
@@ -393,7 +393,7 @@ const FoodDetails = () => {
             <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
               Ready to Eat
             </span>
-            <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">
+            <span className="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
               Community Shared
             </span>
           </div>
@@ -451,9 +451,9 @@ const FoodDetails = () => {
                 </span>
               </div>
               
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-                <h4 className="font-semibold text-yellow-800 mb-2">Important Rules:</h4>
-                <ul className="text-sm text-yellow-700 space-y-1">
+              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
+                <h4 className="font-semibold text-green-800 mb-2">Important Rules:</h4>
+                <ul className="text-sm text-green-700 space-y-1">
                   <li>• Please arrive on time for pickup</li>
                   <li>• Bring your own container if needed</li>
                   <li>• Contact donor before pickup</li>

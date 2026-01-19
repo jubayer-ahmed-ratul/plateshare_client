@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeProvider';
 import { 
   Home, 
   Plus, 
@@ -10,11 +11,14 @@ import {
   LogOut, 
   Menu, 
   X,
-  ChevronDown 
+  ChevronDown,
+  Moon,
+  Sun
 } from 'lucide-react';
 
 const DashboardLayout = () => {
   const { user, logout } = useContext(AuthContext);
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -24,6 +28,7 @@ const DashboardLayout = () => {
     { name: 'Add Food', path: '/dashboard/add-food', icon: Plus },
     { name: 'Manage Foods', path: '/dashboard/manage-foods', icon: List },
     { name: 'My Requests', path: '/dashboard/my-requests', icon: Heart },
+    { name: 'Update Profile', path: '/dashboard/profile', icon: User },
   ];
 
   const handleLogout = async () => {
@@ -56,8 +61,17 @@ const DashboardLayout = () => {
               </NavLink>
             </div>
 
-            {/* Right side - Profile Dropdown */}
+            {/* Right side - Theme Toggle and Profile Dropdown */}
             <div className="flex items-center space-x-4">
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+
               <div className="relative">
                 <button
                   onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
@@ -144,8 +158,19 @@ const DashboardLayout = () => {
               <h2 className="text-lg font-semibold text-themed-primary">Dashboard</h2>
             </div>
             
+            {/* Back to Main Site - At top */}
+            <div className="px-4 mb-4 border-b border-themed pb-4">
+              <NavLink
+                to="/"
+                className="flex items-center space-x-3 px-4 py-3 text-themed-secondary hover:bg-themed-tertiary hover:text-themed-primary rounded-lg transition-colors duration-200"
+              >
+                <Home size={20} />
+                <span>Back to Main Site</span>
+              </NavLink>
+            </div>
+            
             <nav className="flex-1 px-4 space-y-2">
-              {sidebarMenuItems.map((item) => (
+              {sidebarMenuItems.map((item, index) => (
                 <NavLink
                   key={item.path}
                   to={item.path}
@@ -158,22 +183,14 @@ const DashboardLayout = () => {
                     }`
                   }
                 >
+                  <span className="flex items-center justify-center w-6 h-6 text-xs font-bold bg-green-600 text-white rounded-full">
+                    {index + 1}
+                  </span>
                   <item.icon size={20} />
                   <span>{item.name}</span>
                 </NavLink>
               ))}
             </nav>
-
-            {/* Back to Main Site */}
-            <div className="p-4 border-t border-themed">
-              <NavLink
-                to="/"
-                className="flex items-center space-x-3 px-4 py-3 text-themed-secondary hover:bg-themed-tertiary hover:text-themed-primary rounded-lg transition-colors duration-200"
-              >
-                <Home size={20} />
-                <span>Back to Main Site</span>
-              </NavLink>
-            </div>
           </div>
         </aside>
 
